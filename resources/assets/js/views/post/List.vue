@@ -10,7 +10,12 @@
                     <div class="card card-hidden"></div>
                 </div>
                 <div v-if="items.length === 1" class="card-deck">
-                    <post-card v-for="post in items" :post="post" :key="post.id"></post-card>
+                    
+                    <ul class="masonry-list">
+
+                        <post-card v-for="post in items" :post="post" :key="post.id"></post-card>
+                        
+                    </ul>
                     <div class="card card-hidden"></div>
                     <div class="card card-hidden"></div>
                 </div>

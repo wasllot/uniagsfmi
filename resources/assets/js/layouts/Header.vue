@@ -1,12 +1,14 @@
 <template>
-    <header class="topbar is_stuck" style="position:fixed;top:0;width:100%">
+<div>
+        <header class="topbar is_stuck" style="position: fixed;top:0;width:100%">
+
         <nav class="navbar top-navbar navbar-expand-md navbar-light">
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav navbar-logo mr-auto">
                     <li class="nav-item">
-                        <router-link @click.native="showSpinner" class="nav-link nav-brand waves-effect waves-dark" to="/">
+                        <router-link class="nav-link nav-brand waves-effect waves-dark" to="/">
                             <img :src="getLogo()" alt="Logo" class="logo mr-2">
-                            <b>{{ getConfig('company_name') }}</b>
+                            <!-- <b>{{ getConfig('company_name') }}</b> -->
                         </router-link>
                     </li>
                     <li v-if="toggle" class="nav-item">
@@ -21,6 +23,24 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav mr-0 my-lg-0">
+                    <li class="nav-item" v-if="$route.name ==='main'">
+                        <scroll-link class="nav-link text-muted waves-effect waves-dark" href="#study">
+                            Estudios
+                        </scroll-link>
+                    </li>
+
+                    <li class="nav-item" v-if="$route.name ==='main'">
+                        <scroll-link class="nav-link text-muted waves-effect waves-dark" href="#services">
+                            Servicios
+                        </scroll-link>
+                    </li>                    
+
+                    <li class="nav-item" v-if="$route.name ==='main'">
+                        <scroll-link class="nav-link text-muted waves-effect waves-dark" href="#about">
+                            Acerca
+                        </scroll-link>
+                    </li>                    
+
                     <li v-if="getConfig('facebook_group')" class="nav-item">
                         <a rel="nofollow" target="_blank" :href="getConfig('facebook_group')" class="nav-link text-muted waves-effect waves-dark">
                             <i class="fab fa-facebook-f"></i>
@@ -44,13 +64,19 @@
                         </div>
                     </li>
                 </ul>
+                <ul class="navbar-nav mr-0 my-lg-0" >
+
+                    
+                </ul>
                 <ul v-if="isAuth() && !getTwoFactorCode()" class="navbar-nav mr-0 my-lg-0">
+
+
                     <li class="nav-item">
                         <router-link class="nav-link text-muted waves-effect waves-dark" :to="'/home'">
-                            <i class="fas fa-home fa-fw"></i>
+                           Panel
                         </router-link>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown" v-if="$route.name !=='main'">
                         <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href=""
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="username">{{ getAuthUser('full_name') }}</span>
@@ -97,10 +123,14 @@
             </div>
         </nav>
     </header>
+</div>
+
+
 </template>
 
 <script>
-    import {EventBus} from '../event-bus'
+    import {EventBus} from '../event-bus';
+    import scrollLink from '../components/ScrollLink';
 
     export default {
         props: {
@@ -113,6 +143,10 @@
                 search_query: '',
             }
         },
+        components: {
+            scrollLink,
+        },
+
         created() {
             EventBus.$on("config::set", () => {
                 this.$forceUpdate();

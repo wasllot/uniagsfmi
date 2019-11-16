@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\PageRequest;
 use App\Repositories\PageRepository;
 use App\Repositories\ActivityLogRepository;
+use Illuminate\Support\Facades\File;
 
 class PageController extends Controller
 {
@@ -66,6 +67,7 @@ class PageController extends Controller
         return $this->success(compact('pages'));
     }
 
+
     /**
      * Display a public page
      *
@@ -120,6 +122,51 @@ class PageController extends Controller
 
         return $this->success(compact('image_url'));
     }
+
+        /**
+     * Update page cover image
+     *
+     * @param int $id
+     *
+     * @return JsonResponse
+     * @throws AuthorizationException
+     * @throws ValidationException
+     */
+    public function uploadCover($id)
+    {
+        $page = $this->repo->findOrFail($id);
+
+        // $this->authorize('update', $page);
+
+        $image_path = config('system.upload_path.images') . '/';
+        $image = $page->cover;
+
+        if ($image && File::exists($image) && $image != config('config.default_cover')) {
+            File::delete($image);
+        }
+
+        $extension = request()->file('image')->getClientOriginalExtension();
+        $filename = uniqid();
+        request()->file('image')->move($image_path, $filename . "." . $extension);
+        $img = \Image::make($image_path . $filename . "." . $extension);
+        $img->resize(500, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+        $img->crop(500, 250);
+        $img->save($image_path . $filename . "." . $extension);
+        $page->cover = $image_path . $filename . "." . $extension;
+        $page->save();
+
+        $this->activity->record([
+            'module' => $this->module,
+            'module_id' => $page->id,
+            'sub_module' => 'cover',
+            'activity' => 'uploaded'
+        ]);
+
+        return $this->success(['message' => trans('page.cover_uploaded'), 'image' => $image_path . $filename . "." . $extension]);
+    }
+
 
     /**
      * Fetch statistics

@@ -63,4 +63,6 @@ return [
     'update' => 'Update',
     'upload' => 'Upload',
     'yes' => 'Yes',
+    'email_sent' => 'Email sent.',
+    'email_not_sent' => 'Email has been not sent.'
 ];

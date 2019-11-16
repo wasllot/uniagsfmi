@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ config('config.company_name') }}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
-    <link rel="icon" href="/images/favicon.ico">
+    <link rel="icon" href="/uploads/config/logo/{{ config('config.logo') }}">
     <meta name="theme-color" content="#ffffff">
     <link href="{{ mix('/css/style.css') }}" rel="stylesheet">
     <link href="{{ mix('/css/colors/'.config('config.color_theme').'.css') }}" id="theme" rel="stylesheet">

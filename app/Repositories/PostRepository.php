@@ -7,6 +7,7 @@ use App\Post;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Validation\ValidationException;
+use DB;
 
 class PostRepository
 {
@@ -55,6 +56,22 @@ class PostRepository
         }
 
         return $published->orderBy('created_at', 'desc')->paginate($page_length);
+    }
+
+    /**
+     * Get published posts grid.
+     *
+     * @param array $params
+     *
+     * @return Post[]|Collection
+     */
+    public function getPostsSlider($qty)
+    {
+       $published = $this->post
+            ->with('user', 'user.profile', 'category')
+            ->filterByIsDraft(0);
+
+        return $published->orderBy(DB::raw('RAND()'))->take($qty)->get();
     }
 
     /**

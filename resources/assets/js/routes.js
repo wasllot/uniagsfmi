@@ -232,6 +232,11 @@ let routes = [
                 path: '/page/:slug/edit',
                 component: require('./views/page/Edit').default,
                 meta: {title: i18n.page.edit + ' | ' + appName}
+            },
+                        {
+                path: '/page/:slug/cover',
+                component: require('./views/page/Cover').default,
+                meta: {title: i18n.page.cover + ' | ' + appName}
             }
         ]
     },
@@ -258,6 +263,11 @@ let routes = [
             {
                 path: '/:slug',
                 component: require('./views/page/View.vue').default,
+                meta: {title: appName}
+            },            
+            {
+                path: '/i/:slug',
+                component: require('./views/default/info.vue').default,
                 meta: {title: appName}
             }
         ]

@@ -1,9 +1,13 @@
 <template>
-    <div class="page-nav-items">
-        <ul>
-            <page-link v-for="page in items" :page="page" :key="page.id"></page-link>
-        </ul>
+    <div class="row">
+           
+
+        <page-link v-for="page in items" :page="page" :key="page.id"></page-link>
+
     </div>
+
+                 
+
 </template>
 
 <script>
@@ -30,7 +34,7 @@
         },
         data() {
             return {
-                items: []
+                items: [],
             }
         },
         components: {

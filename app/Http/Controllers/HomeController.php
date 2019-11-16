@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\PostRepository;
+use App\Http\Requests\EmailRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Repositories\UserRepository;
 use App\Repositories\ActivityLogRepository;
+use App\Mail\Activate;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendMail;
 
 class HomeController extends Controller
 {
@@ -73,4 +78,15 @@ class HomeController extends Controller
             )
         );
     }
+
+    public function contactEmail(EmailRequest $request){
+
+            // $email = $this->create($request->all());
+            $email = $request->all();
+
+            Mail::to('rei.vzl@gmail.com')->send(new SendMail($email));
+           return $this->success(['email' => trans('general.email_sent', ['action' => trans('general.email_sent')])]);
+
+    }
+
 }

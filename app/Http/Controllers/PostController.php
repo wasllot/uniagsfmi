@@ -193,7 +193,21 @@ class PostController extends Controller
         $posts = $this->repo->getPublishedList($this->request->all());
 
         return $this->success(compact('categories', 'posts'));
-    }
+    }    
+
+    /**
+     * Get slider published posts
+     *
+     * @return JsonResponse
+     */
+    public function getPostSlider()
+    {
+        $grid = $this->repo->getPostsSlider(4);
+
+        $posts = $this->repo->getPostsSlider(6);
+
+        return $this->success(compact('grid', 'posts'));
+    }    
 
     /**
      * Get post details

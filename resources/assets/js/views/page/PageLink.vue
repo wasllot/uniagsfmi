@@ -1,9 +1,20 @@
 <template>
-        <li class="page-nav-item">
-            <router-link @click.native="showSpinner" :to="`${page.slug}`">
-                {{ page.title }}
-            </router-link>
-        </li>
+
+     <div class="col-md-6 col-lg-4 col-12">
+
+            <figure class="snip1543">
+              <img :src="'/'+page.cover" :alt="page.title"/>
+              <figcaption>
+                
+                <p> {{ page.title }}</p>
+
+              </figcaption>
+               <router-link @click.native="showSpinner" :to="`${page.slug}`">
+                           
+                </router-link>
+            </figure>
+    </div>
+
 </template>
 
 <script>

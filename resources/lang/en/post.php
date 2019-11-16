@@ -34,4 +34,5 @@ return [
     'user' => 'User',
     'upload_cover' => 'Upload cover image',
     'view' => 'View',
+    'message' => 'Message'
 ];

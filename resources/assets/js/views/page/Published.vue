@@ -27,6 +27,7 @@
                                         <thead>
                                         <tr>
                                             <th>{{ trans('page.title') }}</th>
+                                            <th>{{ trans('post.cover') }}</th>
                                             <th>{{ trans('page.published_at') }}</th>
                                             <th class="table-option">{{ trans('general.action') }}</th>
                                         </tr>
@@ -34,9 +35,18 @@
                                         <tbody>
                                         <tr v-for="published in pages.data">
                                             <td v-text="published.title"></td>
+                                            <td> <img :src="'/'+published.cover"  width="50" alt=""></td>
                                             <td>{{ published.created_at }}</td>
                                             <td class="table-option">
                                                 <div class="btn-group">
+                                                    <button class="btn btn-info btn-sm" v-tooltip="trans('page.copy_link')" v-on:click="copy(published.slug)">
+                                                        <i class="fas fa-link"></i>
+                                                    </button>
+                                                    <router-link :to="`/page/${published.slug}/cover`"
+                                                                 class="btn btn-success btn-sm"
+                                                                 v-tooltip="trans('post.upload_cover')">
+                                                        <i class="far fa-images"></i>
+                                                    </router-link>
                                                     <router-link :to="`/page/${published.slug}/edit`"
                                                                  class="btn btn-info btn-sm"
                                                                  v-tooltip="trans('page.edit_published')">
@@ -47,7 +57,8 @@
                                                             v-confirm="{ok: confirmDelete(published)}"
                                                             v-tooltip="trans('page.delete_published')">
                                                         <i class="fas fa-trash"></i>
-                                                    </button>
+                                                    </button> 
+                                                    
                                                 </div>
                                             </td>
                                         </tr>
@@ -63,6 +74,7 @@
                 </div>
             </div>
         </div>
+<input type="hidden" id="text-copy" v-model="text" value="">
     </div>
 </template>
 
@@ -84,7 +96,9 @@
                 },
                 statistics: {
                     published: 0,
-                }
+                },
+                text: ''
+            
             };
         },
         mounted() {
@@ -94,6 +108,7 @@
             }
             this.getPages();
             this.getStatistics();
+            this.text = window.location.hostname;
         },
         methods: {
             getStatistics() {
@@ -137,7 +152,29 @@
                     .catch(error => {
                         helper.showDataErrorMsg(error);
                     });
-            }
+            },
+            copy (slug) {
+
+              this.text = this.text + '/'+slug;
+             
+
+              let toCopy = document.querySelector('#text-copy')
+              toCopy.setAttribute('type', 'text')    // 不是 hidden 才能複製
+              toCopy.setAttribute('value', this.text);   
+
+              toCopy.select()
+
+              try {
+                var successful = document.execCommand('copy');
+                toastr.success('Enlace copiado');
+              } catch (err) {
+                toastr.success('No se pudo copiar el enlace');
+              }
+
+              /* unselect the range */
+              toCopy.setAttribute('type', 'hidden')
+              window.getSelection().removeAllRanges()
+            },
         },
         watch: {
             filterPageForm: {

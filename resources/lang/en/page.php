@@ -4,6 +4,7 @@ return [
     'body' => 'Body',
     'cancel' => 'Cancel',
     'could_not_find' => 'Could not find :type',
+    'copy_link' => 'Copy link',
     'delete_published' => 'Delete published page',
     'deleted' => ':type deleted.',
     'edit' => 'Edit',

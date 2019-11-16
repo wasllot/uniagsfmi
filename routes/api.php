@@ -12,6 +12,7 @@
 */
 
 Route::get('/configuration/variable', 'ConfigurationController@getConfigurationVariable');
+Route::post('/sendMail', 'HomeController@contactEmail');
 
 Route::group(['prefix' => 'posts'], function () {
     Route::get('/','PostController@getPublicPosts');
@@ -84,6 +85,8 @@ Route::group(['middleware' => ['jwt.auth']], function () {
     Route::delete('/user/{id}', 'UserController@destroy');
 
     Route::get('/post/pre-requisite','PostController@preRequisite');
+    Route::get('/post/getPostSlider','PostController@getPostSlider');
+
     Route::post('/post/statistics','PostController@statistics');
     Route::post('/post/new','PostController@store');
     Route::get('/post/draft','PostController@getDraftList');
@@ -104,5 +107,6 @@ Route::group(['middleware' => ['jwt.auth']], function () {
     Route::get('/page/published','PageController@getPublishedList');
     Route::delete('/page/{slug}','PageController@destroy');
     Route::get('/page/{slug}','PageController@show');
+    Route::post('/page/cover/{id}', 'PageController@uploadCover');
     Route::post('/page/upload/image','PageController@uploadImage');
 });
