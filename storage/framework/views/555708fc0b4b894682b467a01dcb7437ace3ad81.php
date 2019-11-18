@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo e(config('config.company_name')); ?></title>
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>"/>
-    <link rel="icon" href="/uploads/config/logo/<?php echo e(config('config.logo')); ?>">
+    <link rel="icon" href="/<?php echo e(config('config.logo')); ?>">
     <meta name="theme-color" content="#ffffff">
     <link href="<?php echo e(mix('/css/style.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(mix('/css/colors/'.config('config.color_theme').'.css')); ?>" id="theme" rel="stylesheet">

@@ -42,9 +42,22 @@
                     <li v-if="hasPermission('access-page')">
                         <router-link to="/page/published" exact>
                             <i class="fas fa-columns fa-fw"></i>
-                            <span class="hide-menu">{{ trans('page.pages') }}</span>
+                            <span class="hide-menu">{{ trans('page.certs') }}</span>
+                        </router-link>
+                    </li>                    
+
+                    <li v-if="hasPermission('access-page')">
+                        <router-link to="/page/main" exact>
+                            <i class="fas fa-columns fa-home"></i>
+                            <span class="hide-menu">{{ trans('page.main_page') }}</span>
                         </router-link>
                     </li>
+<!--                     <li v-if="hasPermission('access-page')">                
+                    <router-link to="/default/published" exact>
+                            <i class="fas fa-columns fa-info"></i>
+                            <span class="hide-menu">{{ trans('page.default_pages') }}</span>
+                        </router-link>
+                    </li> -->
                     <li v-if="hasPermission('access-configuration')">
                         <router-link to="/activity-log" exact>
                             <i class="fas fa-bars fa-fw"></i>

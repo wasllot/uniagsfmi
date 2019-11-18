@@ -227,10 +227,25 @@ let routes = [
                 path: '/page/published',
                 component: require('./views/page/Published.vue').default,
                 meta: {title: i18n.page.published_box + ' | ' + appName}
+            },              
+            {
+                path: '/default/published',
+                component: require('./views/default/Published.vue').default,
+                meta: {title: i18n.page.published_box + ' | ' + appName}
+            },            
+            {
+                path: '/page/main',
+                component: require('./views/page/Main.vue').default,
+                meta: {title: i18n.page.main_page + ' | ' + appName}
             },
             {
                 path: '/page/:slug/edit',
                 component: require('./views/page/Edit').default,
+                meta: {title: i18n.page.edit + ' | ' + appName}
+            },
+            {
+                path: '/default/:slug/edit',
+                component: require('./views/default/Edit').default,
                 meta: {title: i18n.page.edit + ' | ' + appName}
             },
                         {
@@ -266,8 +281,8 @@ let routes = [
                 meta: {title: appName}
             },            
             {
-                path: '/i/:slug',
-                component: require('./views/default/info.vue').default,
+                path: '/info/:slug',
+                component: require('./views/default/Info.vue').default,
                 meta: {title: appName}
             }
         ]

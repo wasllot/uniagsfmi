@@ -52,6 +52,12 @@
             };
         },
         mounted() {
+
+            window.$('a').on('click', function(){
+
+                window.$(this).attr('href')
+
+            });
             axios.post('/api/page/statistics')
                 .then(response => response.data)
                 .then(response => {
@@ -63,7 +69,7 @@
 
             if (this.slug) {
                 helper.showSpinner();
-                axios.get('/api/default/page/' + this.slug)
+                axios.get('/api/default/' + this.slug)
                     .then(response => response.data)
                     .then(response => {
                         this.pageForm.title = response.page.title;
@@ -81,10 +87,10 @@
             submit() {
                 // this.pageForm.body = this.cleanHTML(this.pageForm.body);
                 this.pageForm.body = this.addAttributes(this.pageForm.body);
-                this.pageForm.post('/api/page/new')
+                this.pageForm.post('/api/page/default/update')
                     .then(response => {
                         toastr.success(response.page);
-                        this.$router.push('/page/published');
+                        this.$router.push('/default/published');
                     })
                     .catch(error => {
                         helper.showErrorMsg(error);

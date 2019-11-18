@@ -17,10 +17,15 @@ return [
     'new' => 'New',
     'publish' => 'Publish',
     'published' => 'published.',
+    'page_updated' => 'Page updated',
     'published_at' => 'Published at',
     'published_box' => 'Published',
     'slug' => 'Slug',
     'slug_exists' => 'This slug already exists',
     'title' => 'Title',
     'view' => 'View',
+    'main_page' =>'Main page',
+    'section' =>'Section',
+    'default_pages' => 'Default pages',
+    'certs' => 'Certs'
 ];

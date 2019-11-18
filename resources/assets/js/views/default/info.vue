@@ -75,7 +75,7 @@
         mounted() {
             this.slug = this.$route.params.slug;
             helper.showSpinner();
-            axios.get('/api/pages/' + this.slug)
+            axios.get('/api/default/page/' + this.slug)
                 .then(response => response.data)
                 .then(response => {
                     this.page = response.page;

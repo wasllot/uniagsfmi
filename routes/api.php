@@ -104,9 +104,15 @@ Route::group(['middleware' => ['jwt.auth']], function () {
 
     Route::post('/page/statistics','PageController@statistics');
     Route::post('/page/new','PageController@store');
+    Route::post('/page/default/update','PageController@updateDefaultPage');
+    Route::post('/page/main/update','PageController@storeMainPage');
     Route::get('/page/published','PageController@getPublishedList');
+    Route::get('/page/default/published','PageController@getDefaultList');
+    Route::get('/page/main','PageController@getMainPage');
     Route::delete('/page/{slug}','PageController@destroy');
     Route::get('/page/{slug}','PageController@show');
+    Route::get('/default/{slug}','PageController@defaultPage');
+    Route::get('/info/{slug}','PageController@defaultPageView');
     Route::post('/page/cover/{id}', 'PageController@uploadCover');
     Route::post('/page/upload/image','PageController@uploadImage');
 });

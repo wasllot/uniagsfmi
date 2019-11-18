@@ -81,7 +81,20 @@ class PageController extends Controller
 
         $page = $this->repo->getBySlugForGuests($slug);
 
-        return $this->success(compact('categories', 'page'));
+    }
+
+    /**
+     * Display the main page content
+     *
+     * @return JsonResponse
+     */
+
+    public function getMainPage()
+    {
+
+        $page = $this->repo->mainPage(1);
+
+        return $this->success(compact('page'));
     }
 
     /**
@@ -103,6 +116,37 @@ class PageController extends Controller
         ]);
 
         return $this->success(['page' => trans('page.page_processed', ['action' => trans('page.published')])]);
+    }      
+
+    /**
+     * update default page
+     *
+     * @param PageRequest $request
+     *
+     * @return JsonResponse
+     * @throws ValidationException
+     */
+    public function updateDefaultPage(PageRequest $request)
+    {
+        $page = $this->repo->storeDefaultPage($this->request->all());
+
+        return $this->success(['page' => trans('page.page_updated', ['action' => trans('page.update')])]);
+      
+    }    
+
+    /**
+     * Store main page
+     *
+     * @param PageRequest $request
+     *
+     * @return JsonResponse
+     * @throws ValidationException
+     */
+    public function storeMainPage(Request $request)
+    {
+        $page = $this->repo->storeMainPage($this->request->all());
+
+        return $this->success(['page' => trans('page.page_updated', ['action' => trans('page.update')])]);
     }
 
     /**
@@ -190,6 +234,19 @@ class PageController extends Controller
         $pages = $this->repo->getPublishedList($this->request->all());
 
         return $this->success(compact('pages'));
+    }    
+
+
+    /**
+     * Get all default pages
+     *
+     * @return JsonResponse
+     */
+    public function getDefaultList()
+    {
+        $pages = $this->repo->getDefaultList();
+
+        return $this->success(compact('pages'));
     }
 
     /**
@@ -203,6 +260,22 @@ class PageController extends Controller
     public function show($slug)
     {
         $page = $this->repo->getBySlug($slug);
+
+        return $this->success(compact('page'));
+    }    
+
+
+    /**
+     * Get default page details
+     *
+     * @param string $slug
+     *
+     * @return JsonResponse
+     * @throws ValidationException
+     */
+    public function defaultPage($slug)
+    {
+        $page = $this->repo->getDefaultBySlug($slug);
 
         return $this->success(compact('page'));
     }

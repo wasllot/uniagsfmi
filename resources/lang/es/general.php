@@ -60,8 +60,8 @@ return [
     'to' => 'a',
     'token_expired' => 'Su sesión ha expirado. Ingrese de nuevo',
     'total_result_found' => 'Total :count resultados encontrados.',
-    'update' => 'Actualización',
-    'upload' => 'Actualizar',
+    'update' => 'Actualizar',
+    'upload' => 'Cargar',
     'yes' => 'Sí',
     'email_sent' => 'Email enviado.',
     'email_not_sent' => 'El email no ha sido enviado.'

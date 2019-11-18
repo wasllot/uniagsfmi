@@ -23196,7 +23196,7 @@ samp {
 .jumbotron {
   width: 100%;
   min-height: 450px;
-  background: url("https://s122939.gridserver.com/clients/conversant/images/driving.jpg") center center;
+  background-position: center;
   background-size: cover;
   opacity: 1;
   display: table;
@@ -24055,7 +24055,7 @@ select option:first-child {
   transition-delay: 0.1s;
 }
 
-.row {
+.wrapper .row {
   margin-right: 0 !important;
   margin-left: 0 !important;
 }

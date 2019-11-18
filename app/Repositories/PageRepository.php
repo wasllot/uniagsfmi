@@ -3,8 +3,10 @@
 namespace App\Repositories;
 
 use App\Page;
+use App\MainPage;
 use Illuminate\Support\Collection;
 use Illuminate\Validation\ValidationException;
+use DB;
 
 class PageRepository
 {
@@ -46,6 +48,26 @@ class PageRepository
         $page = $this->page
             ->filterBySlug($slug)
             ->first();
+
+        if (!$page) {
+            throw ValidationException::withMessages(['message' => trans('general.invalid_link')]);
+        }
+
+        return $page;
+    }    
+
+    /**
+     * Get default valid page by slug.
+     *
+     * @param string $slug
+     *
+     * @return Page
+     * @throws ValidationException
+     */
+    public function getDefaultBySlug($slug)
+    {
+        $page = DB::table('static_pages')->where('slug', $slug)->first();
+
 
         if (!$page) {
             throw ValidationException::withMessages(['message' => trans('general.invalid_link')]);
@@ -94,6 +116,25 @@ class PageRepository
     }
 
     /**
+     * Find main page by Id
+     *
+     * @param int|null $id
+     *
+     * @return Page
+     * @throws ValidationException
+     */
+    public function mainPage($id = null)
+    {
+        $page = DB::table('main_pages')->where('id', $id)->first();
+
+        if (!$page) {
+            throw ValidationException::withMessages(['message' => trans('page.could_not_find')]);
+        }
+
+        return $page;
+    }
+
+    /**
      * Publish page.
      *
      * @param array $params
@@ -130,6 +171,58 @@ class PageRepository
         $page->save();
 
         return $page;
+    }    
+
+
+    /**
+     * update main page.
+     *
+     * @param array $params
+     *
+     * @return Page
+     * @throws ValidationException
+     */
+    public function storeDefaultPage($params = [])
+    {
+        $id = isset($params['id']) ? $params['id'] : null;
+
+        if ($id) {
+
+            $page = DB::table('static_pages')->where('id', $id)->update([
+            'title' => $params['title'],
+            'body' => $params['body'],
+            'slug' => str_slug($params['title'])
+            ]);    
+        }
+
+        return $page;
+    }    
+
+    /**
+     * update main page.
+     *
+     * @param array $params
+     *
+     * @return Page
+     * @throws ValidationException
+     */
+    public function storeMainPage($params = [])
+    {
+        $id = isset($params['id']) ? $params['id'] : null;
+
+        if ($id) {
+
+            $page = DB::table('main_pages')->where('id', 1)->update([
+                'section_1' => $params['section_1'],
+                'section_2' => $params['section_2'],
+                'section_3' => $params['section_3'],
+                'section_4' => $params['section_4'],
+                'section_5' => $params['section_5'],
+                'section_6' => $params['section_6']
+            ]);    
+        }
+
+        return $page;
     }
 
     /**
@@ -160,5 +253,20 @@ class PageRepository
         }
 
         return $published->orderBy('created_at', 'desc')->paginate($page_length);
+    }
+
+
+    /**
+     * Get default pages.
+     *
+     * @param array $params
+     *
+     * @return Page[]|Collection
+     */
+    public function getDefaultList()
+    {
+
+      return $page = DB::table('static_pages')->get();
+        
     }
 }

@@ -17,10 +17,18 @@ return [
     'new' => 'Nueva',
     'publish' => 'Publicar',
     'published' => 'Publicada.',
+    'page_updated' => 'Página actualizada',
     'published_at' => 'Publicada hace ',
     'published_box' => 'Publicadas',
     'slug' => 'Slug',
     'slug_exists' => 'Este nombre ya existe',
     'title' => 'Título',
     'view' => 'Ver',
+    'main_page' =>'Página principal',
+    'section' =>'Sección',
+    'default_pages' => 'Páginas predefinidas',
+    'certs' => 'Certificados'
+
+
+
 ];
