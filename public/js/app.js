@@ -8136,21 +8136,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -37466,75 +37451,7 @@ var render = function() {
                             })
                           ],
                           1
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "form-group m-b-0" }, [
-                          _c("div", { staticClass: "col-sm-12 text-center" }, [
-                            _vm.getConfig("reset_password")
-                              ? _c(
-                                  "p",
-                                  [
-                                    _vm._v(
-                                      "\n                                " +
-                                        _vm._s(
-                                          _vm.trans(
-                                            "auth.forgot_your_password?"
-                                          )
-                                        ) +
-                                        "\n                                "
-                                    ),
-                                    _c(
-                                      "router-link",
-                                      {
-                                        staticClass: "text-info m-l-5",
-                                        attrs: { to: "/password" }
-                                      },
-                                      [
-                                        _c("b", [
-                                          _vm._v(
-                                            _vm._s(
-                                              _vm.trans("auth.reset_here!")
-                                            )
-                                          )
-                                        ])
-                                      ]
-                                    )
-                                  ],
-                                  1
-                                )
-                              : _vm._e(),
-                            _vm._v(" "),
-                            _vm.getConfig("registration")
-                              ? _c(
-                                  "p",
-                                  [
-                                    _vm._v(
-                                      "\n                                " +
-                                        _vm._s(
-                                          _vm.trans("auth.create_account?")
-                                        ) +
-                                        "\n                                "
-                                    ),
-                                    _c(
-                                      "router-link",
-                                      {
-                                        staticClass: "text-info m-l-5",
-                                        attrs: { to: "/register" }
-                                      },
-                                      [
-                                        _c("b", [
-                                          _vm._v(
-                                            _vm._s(_vm.trans("auth.sign_up"))
-                                          )
-                                        ])
-                                      ]
-                                    )
-                                  ],
-                                  1
-                                )
-                              : _vm._e()
-                          ])
-                        ])
+                        )
                       ]
                     )
                   ])
