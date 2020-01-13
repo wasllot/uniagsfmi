@@ -5,13 +5,13 @@
     "license": "MIT",
     "type": "project",
     "support": {
-        "issues": "https://github.com/kutaloweb/spala/issues",
-        "source": "https://github.com/kutaloweb/spala"
+        "issues": "https://github.com/wasllot/wasllot",
+        "source": "https://github.com/wasllot/spala/wasllot"
     },
     "authors": [
         {
-            "name": "Alexey Kutalo",
-            "email": "kutalo84@gmail.com"
+            "name": "Reinaldo Tineo",
+            "email": "Wasllotdev@gmail.com"
         }
     ],
     "require": {
@@ -68,7 +68,11 @@
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover"
-        ]
+        ],
+         "post-install-cmd": [
+             "php artisan clear-compiled",
+             "chmod -R 777 public/"
+         ]
     },
     "config": {
         "preferred-install": "dist",
