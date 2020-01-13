@@ -28,25 +28,43 @@
 		                                    <label for="name2" class="mb-0">Nombre</label>
 		                                    <div class="row mb-1">
 		                                        <div class="col-lg-12">
-		                                            <input type="text" class="form-control" id="fullname" v-model="form.title" required="">
+		                                            <input type="text" class="form-control" id="fullname" v-model="form.title" placeholder="Tu nombre" required="">
 		                                        </div>
 		                                    </div>
 		                                    <label for="email2" class="mb-0">Correo</label>
 		                                    <div class="row mb-1">
 		                                        <div class="col-lg-12">
-		                                            <input type="text" id="email" placeholder="correo" v-model="form.email" class="form-control"  required="">
+		                                            <input type="text" id="email" placeholder="Tu correo" v-model="form.email" class="form-control"  required="">
 		                                        </div>
 		                                    </div>
 		                                    <label for="message2" class="mb-0">Mensaje</label>
 		                                    <div class="row mb-1">
 		                                        <div class="col-lg-12">
-		                                            <textarea rows="6" id="message" placeholder="¿En qué podemos ayudarte?" v-model="form.message" class="form-control" required=""></textarea>
+		                                            <textarea rows="6" id="message" placeholder="¿Necesitas un sitio web?" v-model="form.message" class="form-control" required=""></textarea>
 		                                        </div>
 		                                    </div>
 		                                    <button class="btn btn-default mx-1" v-on:click="closeContactForm">Cerrar</button>
 		                                    <button type="submit" class="btn btn-secondary btn-lg float-right">Enviar</button>
 		                                </fieldset>
 		                            </form>
+		                        </div>
+		                        <div class="card-footer">
+		                        	<div class="container">
+										<div class="row">
+							              <div class="col-3"></div>
+							                <div class="col-6">
+							                   <ul class="social-icons-ql" style="justify-content: center;display: flex;">
+							                       <li><a :href="getConfig('facebook')" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+							                       <li><a :href="getConfig('linkedin')" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+							                       <li><a :href="getConfig('whatsapp')" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+							                       <li><a :href="getConfig('instagram')" target="_blank"><i class="fab fa-instagram"></i></a></li>
+							                       
+							                   
+							                   </ul>
+							               </div>
+							              <div class="col-3"></div>
+										</div>
+									</div>
 		                        </div>
 		                    </div>
 		                    <!-- /form user info -->
@@ -88,6 +106,9 @@
 					this.closeContactForm();
 				}
 			},
+			getConfig(config) {
+                return helper.getConfig(config);
+            },
 			submit: function() {
 				var message = '';
 				this.message_status = '';
@@ -191,7 +212,7 @@
 	font-family: var(--font-family);
 	font-size: var(--font-size);
 	background-color: #fff;
-	width: var(--contact-form-width);
+	width: 100%;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
@@ -224,7 +245,7 @@
 	font-family: inherit;
 	font-weight: bold;
 	text-decoration: none;
-	background-color: #4CAF50;
+	background-color: #009efb;
 	width: 100%;
 	height: 100%;
 	border: none;
@@ -388,11 +409,11 @@
 
 @media screen and (min-width: 520px) {
 	.contact-form {
-		width: var(--contact-form-size-m-width);
+		width: 100%;
 	}
 
 	.contact-form-active {
-		left: calc(100% - var(--contact-form-active-size-m-left));
+		left: 0;
 	}
 }
 

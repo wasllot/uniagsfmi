@@ -11,8 +11,7 @@ use App\Repositories\PageRepository;
 use App\Repositories\ActivityLogRepository;
 use Illuminate\Support\Facades\File;
 
-class PageController extends Controller
-{
+class PageController extends Controller{
     /**
      * @var Request
      */
@@ -52,7 +51,7 @@ class PageController extends Controller
         $this->repo = $repo;
         $this->activity = $activity;
         $this->category = $category;
-        $this->middleware('permission:access-page')->except(['getPublicPages', 'getPublicPage']);
+        $this->middleware('permission:access-page')->except(['getPublicPages', 'getPublicPage', 'getMainPage']);
     }
 
     /**
@@ -81,7 +80,22 @@ class PageController extends Controller
 
         $page = $this->repo->getBySlugForGuests($slug);
 
+        return $this->success(compact('categories', 'page'));
+
     }
+
+    /**
+     * Display components
+     *
+     * @return JsonResponse
+     */
+    public function getComponents()
+    {
+        $pages = $this->repo->getComponents();
+
+        return $this->success(compact('pages'));
+    }
+
 
     /**
      * Display the main page content
@@ -196,7 +210,7 @@ class PageController extends Controller
         $img->resize(500, null, function ($constraint) {
             $constraint->aspectRatio();
         });
-        $img->crop(500, 250);
+        $img->crop(500, 530);
         $img->save($image_path . $filename . "." . $extension);
         $page->cover = $image_path . $filename . "." . $extension;
         $page->save();
@@ -260,6 +274,8 @@ class PageController extends Controller
     public function show($slug)
     {
         $page = $this->repo->getBySlug($slug);
+
+       // $this->authorize('show', $page);
 
         return $this->success(compact('page'));
     }    

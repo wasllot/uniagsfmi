@@ -24,6 +24,7 @@
             </div>
             <div class="col-12 col-md-12">
                 <div class="form-group">
+                    
                     <label>{{ trans('post.body') }}</label>
                     <summernote-editor
                             type="post"

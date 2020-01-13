@@ -53,6 +53,8 @@ class PageRepository
             throw ValidationException::withMessages(['message' => trans('general.invalid_link')]);
         }
 
+        
+
         return $page;
     }    
 
@@ -267,6 +269,20 @@ class PageRepository
     {
 
       return $page = DB::table('static_pages')->get();
+        
+    }    
+
+    /**
+     * Get components.
+     *
+     * @param array $params
+     *
+     * @return Page[]|Collection
+     */
+    public function getComponents()
+    {
+
+      return $page = DB::table('components')->get();
         
     }
 }

@@ -6,9 +6,9 @@ File: scss
 */
 
 @import '../variable';
-$themecolor: #01c0c8;
-$themecolor-dark: #028ee1;
-$topbar: #01c0c8;
+$themecolor: #03A9F4;
+$themecolor-dark: #A0A1A2;
+$topbar: #FFFFFF;
 
 /*******************
 /*Top bar
@@ -16,20 +16,14 @@ $topbar: #01c0c8;
 
 .topbar {
     background: $topbar;
-    /* Old browsers */
-    background: -moz-linear-gradient(left, #01c0c8 0%, #1f72a2 100%);
-    /* FF3.6-15 */
-    background: -webkit-linear-gradient(left, #01c0c8 0%, #1f72a2 100%);
-    /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right, #01c0c8 0%, #1f72a2 100%);
-    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
     .navbar-header {
         background: $white;
         box-shadow: 4px -4px 10px rgba(0, 0, 0, 0.05);
     }
     .navbar-light .navbar-nav .nav-item > {
         a.nav-link {
-            color: rgba(255, 255, 255, 0.8)!important;
+            color: rgba(27, 25, 25, 0.8) !important;
             &:hover,
             &:focus {
                 color: $white!important;

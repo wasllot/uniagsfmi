@@ -52,12 +52,12 @@
                             <span class="hide-menu">{{ trans('page.main_page') }}</span>
                         </router-link>
                     </li>
-<!--                     <li v-if="hasPermission('access-page')">                
-                    <router-link to="/default/published" exact>
+                    <li v-if="hasPermission('access-page')">                
+                    <router-link to="/default/components" exact>
                             <i class="fas fa-columns fa-info"></i>
-                            <span class="hide-menu">{{ trans('page.default_pages') }}</span>
+                            <span class="hide-menu">{{ trans('page.component') }}s</span>
                         </router-link>
-                    </li> -->
+                    </li>
                     <li v-if="hasPermission('access-configuration')">
                         <router-link to="/activity-log" exact>
                             <i class="fas fa-bars fa-fw"></i>

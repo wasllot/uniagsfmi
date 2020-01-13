@@ -1,9 +1,15 @@
 <template>
-    <div class="row">
+<!--     <div class="row">
            
 
         <page-link v-for="page in items" :page="page" :key="page.id"></page-link>
 
+    </div> -->
+
+     <div class="container-fluid">
+        <div class="container align-items-center justify-content-center" style="display: flex; flex-wrap: wrap;">
+             <page-link v-for="page in items" :page="page" :key="page.id"></page-link>
+        </div>
     </div>
 
                  

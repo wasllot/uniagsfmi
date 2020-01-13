@@ -13,6 +13,8 @@
 
 Route::get('/configuration/variable', 'ConfigurationController@getConfigurationVariable');
 Route::post('/sendMail', 'HomeController@contactEmail');
+Route::get('/page/main','PageController@getMainPage');
+Route::get('/post/getPostSlider','PostController@getPostSlider');
 
 Route::group(['prefix' => 'posts'], function () {
     Route::get('/','PostController@getPublicPosts');
@@ -85,7 +87,7 @@ Route::group(['middleware' => ['jwt.auth']], function () {
     Route::delete('/user/{id}', 'UserController@destroy');
 
     Route::get('/post/pre-requisite','PostController@preRequisite');
-    Route::get('/post/getPostSlider','PostController@getPostSlider');
+
 
     Route::post('/post/statistics','PostController@statistics');
     Route::post('/post/new','PostController@store');
@@ -108,10 +110,10 @@ Route::group(['middleware' => ['jwt.auth']], function () {
     Route::post('/page/main/update','PageController@storeMainPage');
     Route::get('/page/published','PageController@getPublishedList');
     Route::get('/page/default/published','PageController@getDefaultList');
-    Route::get('/page/main','PageController@getMainPage');
     Route::delete('/page/{slug}','PageController@destroy');
     Route::get('/page/{slug}','PageController@show');
-    Route::get('/default/{slug}','PageController@defaultPage');
+    Route::get('/default/page/{slug}','PageController@show');
+    Route::get('/default/components','PageController@getComponents');
     Route::get('/info/{slug}','PageController@defaultPageView');
     Route::post('/page/cover/{id}', 'PageController@uploadCover');
     Route::post('/page/upload/image','PageController@uploadImage');

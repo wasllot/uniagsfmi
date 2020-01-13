@@ -27,7 +27,10 @@ return [
     'main_page' =>'Página principal',
     'section' =>'Sección',
     'default_pages' => 'Páginas predefinidas',
-    'certs' => 'Certificados'
+    'certs' => 'Certificados',
+    'component' => 'Componente',
+    'message' => 'Por favor, para copiar un componente, hacer click derecho sobre el componente a copiar y seleccione "Seleccionar todo" (importante) y luego copiar. Luego péguelo en el lugar deseado'
+
 
 
 

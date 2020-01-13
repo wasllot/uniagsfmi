@@ -24,19 +24,25 @@
                 </ul>
                 <ul class="navbar-nav mr-0 my-lg-0">
                     <li class="nav-item" v-if="$route.name ==='main'">
-                        <scroll-link class="nav-link text-muted waves-effect waves-dark" href="#study">
-                            Estudios
+                        <scroll-link class="nav-link text-muted waves-effect waves-dark" href="#portfolio">
+                            Portafolio
                         </scroll-link>
                     </li>
 
                     <li class="nav-item" v-if="$route.name ==='main'">
-                        <scroll-link class="nav-link text-muted waves-effect waves-dark" href="#services">
+                        <scroll-link class="nav-link text-muted waves-effect waves-dark" href="#our-process">
                             Servicios
+                        </scroll-link>
+                    </li>                     
+
+                    <li class="nav-item" v-if="$route.name ==='main'">
+                        <scroll-link class="nav-link text-muted waves-effect waves-dark" href="#blog">
+                            Blog
                         </scroll-link>
                     </li>                    
 
                     <li class="nav-item" v-if="$route.name ==='main'">
-                        <scroll-link class="nav-link text-muted waves-effect waves-dark" href="#about">
+                        <scroll-link class="nav-link text-muted waves-effect waves-dark" href="#about-us">
                             Acerca
                         </scroll-link>
                     </li>                    

@@ -50,6 +50,7 @@
                     ['view', ['fullscreen', 'codeview']],
                     ['help', ['help']]
                 ],
+                lang: "es-ES"
             };
             let vm = this;
             config.callbacks = {

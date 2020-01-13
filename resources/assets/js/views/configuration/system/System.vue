@@ -131,6 +131,72 @@
                                                             prop-name="facebook_group">
                                                 </show-error>
                                             </div>
+                                        </div>                                        
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-group">
+                                                <label>Facebook</label>
+                                                <input class="form-control" type="text" value=""
+                                                       v-model="configForm.facebook" name="facebook"
+                                                       :placeholder="trans('configuration.facebook')">
+                                                <show-error :form-name="configForm"
+                                                            prop-name="facebook">
+                                                </show-error>
+                                            </div>
+                                        </div>                                        
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-group">
+                                                <label>Twitter</label>
+                                                <input class="form-control" type="text" value=""
+                                                       v-model="configForm.twitter" name="twitter"
+                                                       :placeholder="trans('configuration.twitter')">
+                                                <show-error :form-name="configForm"
+                                                            prop-name="twitter">
+                                                </show-error>
+                                            </div>
+                                        </div>                                        
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-group">
+                                                <label>Instagram</label>
+                                                <input class="form-control" type="text" value=""
+                                                       v-model="configForm.instagram" name="instagram"
+                                                       :placeholder="trans('configuration.instagram')">
+                                                <show-error :form-name="configForm"
+                                                            prop-name="instagram">
+                                                </show-error>
+                                            </div>
+                                        </div>                                       
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-group">
+                                                <label>Linkedin</label>
+                                                <input class="form-control" type="text" value=""
+                                                       v-model="configForm.linkedin" name="linkedin"
+                                                       :placeholder="trans('configuration.linkedin')">
+                                                <show-error :form-name="configForm"
+                                                            prop-name="linkedin">
+                                                </show-error>
+                                            </div>
+                                        </div>                                        
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-group">
+                                                <label>Telegram</label>
+                                                <input class="form-control" type="text" value=""
+                                                       v-model="configForm.telegram" name="telegram"
+                                                       :placeholder="trans('configuration.telegram')">
+                                                <show-error :form-name="configForm"
+                                                            prop-name="telegram">
+                                                </show-error>
+                                            </div>
+                                        </div>                                        
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-group">
+                                                <label>Whatsapp</label>
+                                                <input class="form-control" type="text" value=""
+                                                       v-model="configForm.whatsapp" name="whatsapp"
+                                                       :placeholder="trans('configuration.whatsapp')">
+                                                <show-error :form-name="configForm"
+                                                            prop-name="whatsapp">
+                                                </show-error>
+                                            </div>
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <div class="form-group">
@@ -253,6 +319,12 @@
                     company_description: '',
                     contact_info: '',
                     facebook_group: '',
+                    facebook: '',
+                    twitter: '',
+                    instagram: '',
+                    telegram: '',
+                    whatsapp: '',
+                    linkedin: '',
                     https: 0,
                     multilingual: 0,
                     maintenance_mode: 0,

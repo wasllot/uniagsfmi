@@ -41,6 +41,7 @@ mix.js('resources/assets/js/app.js', 'public/js/app.js')
     .sass('resources/assets/sass/colors/purple-dark.scss', 'public/css/colors')
     .sass('resources/assets/sass/colors/red.scss', 'public/css/colors')
     .sass('resources/assets/sass/colors/red-dark.scss', 'public/css/colors')
+    .sass('resources/assets/sass/colors/light.scss', 'public/css/colors')
     .webpackConfig({
         plugins: [
             new CompressionPlugin({

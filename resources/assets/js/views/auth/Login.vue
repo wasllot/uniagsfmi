@@ -24,22 +24,6 @@
                                     :disabled="isLoading">
                             </button-spinner>
                         </div>
-                        <div class="form-group m-b-0">
-                            <div class="col-sm-12 text-center">
-                                <p v-if="getConfig('reset_password')">
-                                    {{ trans('auth.forgot_your_password?') }}
-                                    <router-link to="/password" class="text-info m-l-5">
-                                        <b>{{ trans('auth.reset_here!') }}</b>
-                                    </router-link>
-                                </p>
-                                <p v-if="getConfig('registration')">
-                                    {{ trans('auth.create_account?') }}
-                                    <router-link to="/register" class="text-info m-l-5">
-                                        <b>{{trans('auth.sign_up')}}</b>
-                                    </router-link>
-                                </p>
-                            </div>
-                        </div>
                     </form>
                 </div>
             </div>

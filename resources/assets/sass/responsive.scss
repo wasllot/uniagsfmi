@@ -63,6 +63,8 @@ File: scss
   .homeMap {
     height: 600px;
   }
+
+
   .navbar-header {
     width: 200px;
     flex-shrink: 0;
@@ -99,6 +101,20 @@ File: scss
   .username {
     display: none;
   }
+    .process-wrapp{
+    display: flex !important;
+    flex-flow: column-reverse !important;
+  }
+
+  .features_tab_inner .features_tab_left {
+    width: 100% !important;
+    margin-left: 2rem;
+    text-align: center;
+  }
+  .features_tab_inner .features_tab_right {
+    display: none;
+  }
+
   .breadcrumb-item {
     font-size: 12px;
   }

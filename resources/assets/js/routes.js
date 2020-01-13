@@ -35,16 +35,6 @@ let routes = [
                 meta: {title: i18n.auth.login + ' | ' + appName}
             },
             {
-                path: '/password',
-                component: require('./views/auth/Password.vue').default,
-                meta: {title: i18n.user.reset_password + ' | ' + appName}
-            },
-            {
-                path: '/register',
-                component: require('./views/auth/Register.vue').default,
-                meta: {title: i18n.auth.register + ' | ' + appName}
-            },
-            {
                 path: '/auth/:token/activate',
                 component: require('./views/auth/Activate.vue').default,
                 meta: {title: i18n.auth.two_factor_code + ' | ' + appName}
@@ -237,6 +227,11 @@ let routes = [
                 path: '/page/main',
                 component: require('./views/page/Main.vue').default,
                 meta: {title: i18n.page.main_page + ' | ' + appName}
+            },            
+            {
+                path: '/default/components',
+                component: require('./views/pages/Components.vue').default,
+                meta: {title: i18n.page.component + 's | ' + appName}
             },
             {
                 path: '/page/:slug/edit',

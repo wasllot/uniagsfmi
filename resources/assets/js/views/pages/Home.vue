@@ -8,55 +8,7 @@
                 </ol>
             </div>
         </div>
-        <div class="row" v-if="hasRole('admin')">
-            <div class="col-lg-12 col-md-12">
-                <h3>{{ trans('dashboard.users') }}</h3>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card card-inverse card-info">
-                    <div class="card-body">
-                        <h4 class="card-title text-white">{{ trans('dashboard.total') }}</h4>
-                        <div class="text-right">
-                            <h2 class="font-light m-b-0 text-white"><i class="fas fa-users fa-lg pull-right"></i> <span
-                                    class="pull-left">{{ all_registered_users }}</span></h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card card-inverse card-primary">
-                    <div class="card-body">
-                        <h4 class="card-title text-white">{{ trans('dashboard.today') }}</h4>
-                        <div class="text-right">
-                            <h2 class="font-light m-b-0 text-white"><i class="fas fa-users fa-lg pull-right"></i> <span
-                                    class="pull-left">{{ today_registered_users }}</span></h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card card-inverse card-success">
-                    <div class="card-body">
-                        <h4 class="card-title text-white">{{trans('dashboard.week') }}</h4>
-                        <div class="text-right">
-                            <h2 class="font-light m-b-0 text-white"><i class="fas fa-users fa-lg pull-right"></i> <span
-                                    class="pull-left">{{ weekly_registered_users }}</span></h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card card-inverse card-warning">
-                    <div class="card-body">
-                        <h4 class="card-title text-white">{{ trans('dashboard.month') }}</h4>
-                        <div class="text-right">
-                            <h2 class="font-light m-b-0 text-white"><i class="fas fa-users fa-lg pull-right"></i> <span
-                                    class="pull-left">{{ monthly_registered_users }}</span></h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <div class="row" v-if="hasRole('admin')">
             <div class="col-lg-12 col-md-12">
                 <h3>{{ trans('dashboard.posts') }}</h3>

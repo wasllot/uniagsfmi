@@ -27,5 +27,7 @@ return [
     'main_page' =>'Main page',
     'section' =>'Section',
     'default_pages' => 'Default pages',
-    'certs' => 'Certs'
+    'certs' => 'Certs',
+    'component' => 'Component',
+    'message' => 'Please, to copy a component, rigth click and select "Select all" and then copy it.Now you can paste the copied code in another editor'
 ];

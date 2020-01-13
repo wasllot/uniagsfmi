@@ -82,6 +82,7 @@
                     this.categories = response.categories;
                     if (this.page) {
                         this.documentTitle = `${this.page.title} | ${helper.getConfig('company_name')}`;
+                        
                     } else {
                         this.documentTitle = `${i18n.general.page_not_found_heading} | ${helper.getConfig('company_name')}`;
                     }

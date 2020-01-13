@@ -62,7 +62,7 @@ class PostController extends Controller
         $this->activity = $activity;
         $this->user = $user;
         $this->category = $category;
-        $this->middleware('permission:access-post')->except(['getPublicPosts', 'getPublicPost']);
+        $this->middleware('permission:access-post')->except(['getPublicPosts', 'getPublicPost', 'getPostSlider']);
     }
 
     /**

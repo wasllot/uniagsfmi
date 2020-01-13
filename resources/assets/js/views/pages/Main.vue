@@ -36,7 +36,7 @@
 
           <div class="jumbotron" :style="{ 'background-image' : 'url(\'' + getBackground + '\')' }">
             
-            <div id="black"></div>
+            <!-- <div id="black"></div> -->
             
             <div style="" class="animated fadeInDown">
               <div class="container-fluid">
@@ -45,12 +45,13 @@
 
                     <div class="row">
                       <div class="col-md-6">
-                        <h1>{{ getConfig('company_description') }}</h1>
+                        <h1 style="color: #595959">{{ getConfig('company_description') }}</h1>
+                        <h5>Agencia de Marketing Digital</h5>
                         <hr style="width:25%;text-align:left;margin:30px 0; border:2.5px solid #fff;"/>
                       </div>
                       <div class="col-md-6 d-flex h-100 justify-content-center align-items-center">
 
-                          <img :src="'/'+getConfig('logo')" alt="Logo" style="width: 300px;" class="mr-2 my-auto">
+                          <!-- <img :src="'/'+getConfig('logo')" alt="Logo" style="width: 300px; border-radius: 50%;" class="mr-2 my-auto"> -->
                           
                         </div>                    
                       </div>                  
@@ -60,6 +61,9 @@
               </div>
             </div>
           </div>
+
+    
+
 
 
           <div class="wrapper">
@@ -74,9 +78,6 @@
 
               <div class="news p-1">
                 <div class="row">
-                  <div class="container">
-                    <h2 class="py-2">Noticias</h2>
-                  </div>
                   <br>
                    <div class="col-12 pb-5">
                       <!--SECTION START-->
@@ -112,6 +113,7 @@
                </div>
              </div>
 
+          
           </div>
         </div>
         <!-- <post-list></post-list> -->
@@ -226,4 +228,6 @@
             }
         }
     }
+
+
 </script>
