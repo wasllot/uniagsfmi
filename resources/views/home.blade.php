@@ -10,7 +10,7 @@
     <link rel="icon" href="/{{ config('config.logo') }}">
     <meta name="theme-color" content="#ffffff">
     <link href="{{ mix('/css/style.css') }}" rel="stylesheet">
-    <link href="{{ mix('/css/colors/'.config('config.color_theme').'.css') }}" id="theme" rel="stylesheet">
+    <link href="{{ mix('/css/colors/light.css') }}" id="theme" rel="stylesheet">
 </head>
 <body class="fix-header fix-sidebar card-no-border">
 <div class="preloader">
