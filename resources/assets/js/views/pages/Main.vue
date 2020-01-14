@@ -1,6 +1,5 @@
 <template>
     <section id="wrapper">
-      <contact-form></contact-form>
       
 
         <div v-if="getConfig('public_login') && !isAuth" class="hero d-flex" :style="{ 'background-image' : 'url(\'' + getBackground + '\')' }">
@@ -123,7 +122,6 @@
 <script>
     import postList from '../post/List'
     import pageList from '../page/List'
-    import contactForm from '../../components/ContactForm'
     import postSlider from '../../components/PostSlider'
     import buttonSpinner from '../../components/ButtonSpinner';
 
