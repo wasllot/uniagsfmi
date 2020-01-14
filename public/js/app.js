@@ -7882,7 +7882,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -7910,7 +7909,6 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     postList: _post_List__WEBPACK_IMPORTED_MODULE_0__["default"],
     pageList: _page_List__WEBPACK_IMPORTED_MODULE_1__["default"],
-    contactForm: contactForm,
     postSlider: _components_PostSlider__WEBPACK_IMPORTED_MODULE_2__["default"],
     buttonSpinner: _components_ButtonSpinner__WEBPACK_IMPORTED_MODULE_3__["default"]
   },

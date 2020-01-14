@@ -4,10 +4,6 @@ $themecolor: #03A9F4;
 $themecolor-dark: #A0A1A2;
 $topbar: #FFFFFF;
 
-/*******************
-/*Top bar
-*******************/
-
 .topbar {
     background: $topbar;
 
@@ -27,9 +23,7 @@ $topbar: #FFFFFF;
 }
 
 
-/*******************
-/*General Elements
-*******************/
+
 a{
     color:$themecolor;
 }
@@ -96,9 +90,6 @@ a.link {
     border-color: $themecolor;
 }
 
-/*******************
-/*Buttons
-*******************/
 
 .btn-themecolor,
 .btn-themecolor.disabled {
@@ -116,10 +107,6 @@ a.link {
     }
 }
 
-
-/*******************
-/*sidebar navigation
-*******************/
 
 .sidebar-nav {
     background: $sidebar;
@@ -169,9 +156,6 @@ a.link {
     }
 }
 
-/*******************
-/*Vue multiselect
-*******************/
 
 .multiselect__option--highlight {
     background: $themecolor;

@@ -1,6 +1,5 @@
 <template>
-    <section id="wrapper">
-      
+    <section id="wrapper">    
 
         <div v-if="getConfig('public_login') && !isAuth" class="hero d-flex" :style="{ 'background-image' : 'url(\'' + getBackground + '\')' }">
             <div class="login-box card row justify-content-center align-self-center">
@@ -148,7 +147,6 @@
         components: {
             postList,
             pageList,
-            contactForm,
             postSlider,
             buttonSpinner
         },
