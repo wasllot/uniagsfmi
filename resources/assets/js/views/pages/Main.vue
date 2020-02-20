@@ -31,10 +31,9 @@
             </div>
         </div>
         <div v-else>
-
+<!--
           <div class="jumbotron" :style="{ 'background-image' : 'url(\'' + getBackground + '\')' }">
-            
-            <!-- <div id="black"></div> -->
+          
             
             <div style="" class="animated fadeInDown">
               <div class="container-fluid">
@@ -49,7 +48,6 @@
                       </div>
                       <div class="col-md-6 d-flex h-100 justify-content-center align-items-center">
 
-                          <!-- <img :src="'/'+getConfig('logo')" alt="Logo" style="width: 300px; border-radius: 50%;" class="mr-2 my-auto"> -->
                           
                         </div>                    
                       </div>                  
@@ -58,7 +56,37 @@
               
               </div>
             </div>
-          </div>
+          </div>-->
+
+              <div class="header">
+      
+                <div class="info">
+
+                  <h4>
+
+                      <a href="#">{{ getConfig('company_description') }}</a>
+
+                  </h4>
+
+                  <br>
+
+                  <h1 class="text-white">Bienvenido a Enchufate</h1>
+
+                  <br>
+
+                  <div class="meta">
+
+                    <a  href="#" target="_b" class="author">
+
+                        <img :src="'/'+getConfig('logo')" alt="Logo" class="img-radius wid-60" >
+
+                    </a>
+
+                  </div>
+
+                </div>
+
+              </div>
 
     
 
@@ -68,7 +96,70 @@
 
               <!-- programs -->
 
-              <div v-html="page.section_1"></div>
+                <div v-html="page.section_1"></div>
+
+                <div class="container">
+                  
+                  <div class="img-carousel py-4">
+          
+
+                      <div class="owl-carousel products-carousel" id="productsCarousel">
+
+                          <div class="item zoom">
+                              
+                              <img class="img-fluid" src="assets/images/enchufate.jpeg" alt="Image">
+
+                              <a target="_blank" rel="nofollow" href="group-details.html" class="btn btn-arrow">
+
+                                  Code
+                                  <i class="fa fa-arrow-right" aria-hidden="true"></i>
+
+                              </a>
+
+                          </div>
+
+                          <div class="item zoom">
+                           
+                              <img class="img-fluid" src="assets/images/enchufate.jpeg" alt="Image">
+
+                              <a target="_blank" rel="nofollow" href="#" class="btn btn-arrow">
+
+                                  Social Media
+                                  <i class="fa fa-arrow-right" aria-hidden="true"></i>
+
+                              </a>
+
+                          </div>
+
+                          <div class="item zoom">
+                             
+                              <img class="img-fluid" src="assets/images/enchufate.jpeg" alt="Image">
+
+                              <a target="_blank" rel="nofollow" href="#" class="btn btn-arrow">
+
+                                  Academy
+                                  <i class="fa fa-arrow-right" aria-hidden="true"></i>
+
+                              </a>
+
+                          </div>
+
+                          <div class="item zoom">
+                        
+                              <img class="img-fluid" src="assets/images/enchufate.jpeg" alt="Image">
+
+                              <a target="_blank" rel="nofollow" href="#" class="btn btn-arrow">
+                                  ServiTech
+                                  <i class="fa fa-arrow-right" aria-hidden="true"></i>
+
+                              </a>
+
+                          </div>
+
+                      </div>  
+                            
+                  </div>
+                </div>
 
               <!--customer-->
               <div v-html="page.section_2"></div>
@@ -87,19 +178,374 @@
 
               <!--builder-->
               <div v-html="page.section_3"></div>
+
+              <div class="container">
+                
+                 <div class="img-carousel py-4">
+        
+
+                    <div class="owl-carousel products-carousel" id="productsCarousel">
+
+                        <div class="item zoom">
+                            
+                            <img class="img-fluid" src="assets/images/enchufate.jpeg" alt="Image">
+
+                            <a target="_blank" rel="nofollow" href="group-details.html" class="btn btn-arrow">
+
+                                Code
+                                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+
+                            </a>
+
+                        </div>
+
+                        <div class="item zoom">
+                         
+                            <img class="img-fluid" src="assets/images/enchufate.jpeg" alt="Image">
+
+                            <a target="_blank" rel="nofollow" href="#" class="btn btn-arrow">
+
+                                Social Media
+                                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+
+                            </a>
+
+                        </div>
+
+                        <div class="item zoom">
+                           
+                            <img class="img-fluid" src="assets/images/enchufate.jpeg" alt="Image">
+
+                            <a target="_blank" rel="nofollow" href="#" class="btn btn-arrow">
+
+                                Academy
+                                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+
+                            </a>
+
+                        </div>
+
+                        <div class="item zoom">
+                      
+                            <img class="img-fluid" src="assets/images/enchufate.jpeg" alt="Image">
+
+                            <a target="_blank" rel="nofollow" href="#" class="btn btn-arrow">
+                                ServiTech
+                                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+
+                            </a>
+
+                        </div>
+
+                    </div>  
+                          
+                </div>
+
+              </div>
              
               <!--testing-->
 
               <div v-html="page.section_4"></div>
+
+              <div class="container">
+                
+                <div class="row py-4">
+
+                    <div class="col-md-12">
+
+                        <div id="news-slider6" class="owl-carousel">
+
+                            <div class="post-slide6">
+
+                                <div class="post-img">
+
+                                    <img class="img-fluid" src="http://bestjquery.com/tutorial/news-slider/demo28/images/img-1.jpg" alt="">
+
+                                    <div class="post-info">
+
+                                        <ul class="category">
+
+                                            <li>En <a target="_blank" rel="nofollow" href="#">Diseño gráfico</a></li>
+
+                                            <li>por <a target="_blank" rel="nofollow" href="#">admin</a></li>
+
+                                        </ul>
+
+                                        <span class="post-date">Enero 05, 2020</span>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="post-review">
+
+                                    <span class="icons">
+
+                                        <img class="img-fluid" src="http://bestjquery.com/tutorial/news-slider/demo28/images/img-5.jpg" alt="">
+
+                                    </span>
+
+                                    <h3 class="post-title">
+
+                                        <a target="_blank" rel="nofollow" href="#">Banners</a>
+
+                                    </h3>
+
+                                    <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda culpa cumque dicta sint soluta voluptas eius iusto modi reprehenderit sint soluta voluptas.</p>
+
+                                    <a target="_blank" rel="nofollow" href="#" class="read">Leer más</a>
+
+                                </div>
+
+                            </div>
+             
+                            <div class="post-slide6">
+
+                                <div class="post-img">
+
+                                    <img class="img-fluid" src="http://bestjquery.com/tutorial/news-slider/demo28/images/img-2.jpg" alt="">
+
+                                    <div class="post-info">
+
+                                        <ul class="category">
+
+                                            <li>En <a target="_blank" rel="nofollow" href="#">Diseño gráfico</a></li>
+
+                                            <li>por <a target="_blank" rel="nofollow" href="#">admin</a></li>
+
+                                        </ul>
+
+                                        <span class="post-date">Mayo 07, 2020</span>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="post-review">
+
+                                    <span class="icons">
+
+                                        <img class="img-fluid" src="http://bestjquery.com/tutorial/news-slider/demo28/images/img-6.jpg" alt="">
+
+                                    </span>
+
+                                    <h3 class="post-title"><a target="_blank" rel="nofollow" href="#">Logo</a></h3>
+
+                                    <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda culpa cumque dicta sint soluta voluptas eius iusto modi reprehenderit sint soluta voluptas.</p>
+
+                                    <a target="_blank" rel="nofollow" href="#" class="read">Leer más</a>
+
+                                </div>
+
+                            </div>
+                            
+                            <div class="post-slide6">
+
+                                <div class="post-img">
+
+                                    <img class="img-fluid" src="http://bestjquery.com/tutorial/news-slider/demo28/images/img-3.jpg" alt="">
+
+                                    <div class="post-info">
+
+                                        <ul class="category">
+
+                                            <li>En <a target="_blank" rel="nofollow" href="#">Programación</a></li>
+
+                                            <li>por <a target="_blank" rel="nofollow" href="#">admin</a></li>
+
+                                        </ul>
+
+                                        <span class="post-date">May 07, 2020</span>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="post-review">
+
+                                    <span class="icons">
+
+                                        <img class="img-fluid" src="http://bestjquery.com/tutorial/news-slider/demo28/images/img-6.jpg" alt="">
+
+                                    </span>
+
+                                    <h3 class="post-title"><a target="_blank" rel="nofollow" href="#">Sistema de inventario</a></h3>
+
+                                    <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda culpa cumque dicta sint soluta voluptas eius iusto modi reprehenderit sint soluta voluptas.</p>
+
+                                    <a target="_blank" rel="nofollow" href="#" class="read">Leer más</a>
+
+                                </div>
+
+                            </div>
+                            
+                            <div class="post-slide6">
+
+                                <div class="post-img">
+
+                                    <img class="img-fluid" src="http://bestjquery.com/tutorial/news-slider/demo28/images/img-4.jpg" alt="">
+
+                                    <div class="post-info">
+
+                                        <ul class="category">
+
+                                            <li>En <a target="_blank" rel="nofollow" href="#">Social media</a></li>
+
+                                            <li>por <a target="_blank" rel="nofollow" href="#">admin</a></li>
+
+                                        </ul>
+
+                                        <span class="post-date">May 07, 2020</span>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="post-review">
+
+                                    <span class="icons">
+
+                                        <img class="img-fluid" src="http://bestjquery.com/tutorial/news-slider/demo28/images/img-7.jpg" alt="">
+
+                                    </span>
+
+                                    <h3 class="post-title">
+
+                                        <a target="_blank" rel="nofollow" href="#">Plan de marketing</a>
+
+                                    </h3>
+
+                                    <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda culpa cumque dicta sint soluta voluptas eius iusto modi reprehenderit sint soluta voluptas.</p>
+                                    
+
+                                    <a target="_blank" rel="nofollow" href="#" class="read">Leer más</a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+              </div>
               
 
               <!--conversion-->
               <div v-html="page.section_5"></div>
 
+              <div class="container">
+                  
+
+                  <div class="row py-4">
+
+                      <div class="col-md-12">
+
+                          <div id="news-slider7" class="owl-carousel">
+
+                              <div class="card p-2 mr-2">
+
+                                  <div class="all corporate">
+
+                                    <div class="item">
+
+                                      <img class="img-fluid" src="http://themes.muffingroup.com/betheme/documentation/doc-images/muffin-options/custom-js.png" alt="Proyecto 1">
+
+                                      <div class="p-inner text-center py-2">
+
+                                        <h5>Proyecto 1</h5>
+
+                                        <div class="cat">Corporate</div>
+
+                                      </div>
+
+                                    </div>
+
+                                  </div>
+
+                              </div>
+               
+                              <div class="card p-2 mr-2">
+
+                                  <div class="all corporate">
+
+                                    <div class="item">
+
+                                      <img class="img-fluid" src="http://themes.muffingroup.com/betheme/documentation/doc-images/muffin-options/custom-js.png" alt="Proyecto 1">
+
+                                      <div class="p-inner text-center py-2">
+
+                                        <h5>Proyecto 1</h5>
+
+                                        <div class="cat">Corporate</div>
+
+                                      </div>
+
+                                    </div>
+
+                                  </div>
+
+                              </div>
+                              
+                              <div class="card p-2 mr-2">
+
+                                  <div class="all corporate">
+
+                                    <div class="item">
+
+                                      <img class="img-fluid" src="http://themes.muffingroup.com/betheme/documentation/doc-images/muffin-options/custom-js.png" alt="Proyecto 1">
+
+                                      <div class="p-inner text-center py-2">
+
+                                        <h5>Proyecto 1</h5>
+
+                                        <div class="cat">Corporate</div>
+
+                                      </div>
+
+                                    </div>
+
+                                  </div>
+
+                              </div>
+                              
+                              <div class="card p-2 mr-2">
+
+                                  <div class="all corporate">
+
+                                    <div class="item">
+
+                                      <img class="img-fluid" src="http://themes.muffingroup.com/betheme/documentation/doc-images/muffin-options/custom-js.png" alt="Proyecto 1">
+
+                                      <div class="p-inner text-center py-2">
+
+                                        <a target="_blank" rel="nofollow" href="portfolio-details.html"><h5>Proyecto 1</h5></a>
+
+                                        <div class="cat">Corporate</div>
+
+                                      </div>
+
+                                    </div>
+
+                                  </div>
+
+                              </div>
+
+                          </div>
+
+                      </div>
+
+                  </div>
+
+
+              </div>
+
               <!--portfolio-->
 
 
-              <div class="portfolio" id="portfolio">
+<!--              <div class="portfolio" id="portfolio">
                 <div class="container">
                 <div v-html="page.section_6"></div>
                   
@@ -113,7 +559,10 @@
 
           
           </div>
+      -->
+
         </div>
+      </div>
         <!-- <post-list></post-list> -->
     </section>
 </template>
@@ -191,6 +640,7 @@
                   helper.showDataErrorMsg(error);
                   helper.hideSpinner();
               });
+
 
         },
         methods: {

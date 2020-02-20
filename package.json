@@ -1,9 +1,9 @@
 {
-  "name": "spala",
+  "name": "Ecnhufate",
   "version": "1.0.2",
-  "author": "Alexey Kutalo <kutalo84@gmail.com>",
+  "author": "Reinaldo Tineo <wasllotdev@gmail.com>",
   "license": "MIT",
-  "description": "A modern lightweight CMS for Laravel and Vue developers",
+  "description": "Sitio web para Enchufate",
   "keywords": [
     "spala",
     "cms",
@@ -12,7 +12,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/kutaloweb/spala"
+    "url": "https://github.com/wasllot/blog"
   },
   "scripts": {
     "dev": "npm run development",

@@ -86,9 +86,19 @@ Route::group(['middleware' => ['jwt.auth']], function () {
     Route::delete('/user/profile/avatar/remove/{id}', 'UserController@removeAvatar');
     Route::delete('/user/{id}', 'UserController@destroy');
 
+    
+    Route::get('/team/pre-requisite','TeamController@preRequisite');
+    Route::post('/team/statistics','TeamController@statistics');
+    Route::post('/team/new','TeamController@store');
+    Route::get('/team/draft','TeamController@getDraftList');
+    Route::get('/team/published','TeamController@getPublishedList');
+    Route::delete('/team/{slug}','TeamController@destroy');
+    Route::get('/team/{slug}','TeamController@show');
+    Route::post('/team/upload/image','TeamController@uploadImage');
+    Route::post('/team/cover/{id}', 'TeamController@uploadCover');
+    Route::delete('/team/cover/remove/{id}', 'TeamController@removeCover');    
+
     Route::get('/post/pre-requisite','PostController@preRequisite');
-
-
     Route::post('/post/statistics','PostController@statistics');
     Route::post('/post/new','PostController@store');
     Route::get('/post/draft','PostController@getDraftList');

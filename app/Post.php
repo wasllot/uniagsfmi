@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Auth;
  * @property-read \App\User $user
  * @property-read \App\Category $category
  */
+
 class Post extends Model
 {
     /**

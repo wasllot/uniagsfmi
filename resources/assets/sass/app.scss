@@ -10,7 +10,7 @@ Global Styles
 
 body {
   background: $sidebar;
-  font-family: $bodyfont;
+  font-family: 'Dosis', sans-serif !important;
   overflow-x: hidden;
   color: $bodytext;
   font-weight: 300;
@@ -4577,3 +4577,4 @@ i::after {
   left: 0;
   opacity: 1;
 }
+

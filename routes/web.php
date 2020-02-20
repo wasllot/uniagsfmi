@@ -29,6 +29,8 @@ Route::get('/js/lang', function () {
     exit();
 })->name('assets.lang');
 
+Route::get('/test', 'AuthController@registro_de_prueba');
+
 Route::get('/{vue?}', function () {
     if(Crawler::isCrawler()) {
         $category = App\Category::where('slug', Request::segment(1))->first();

@@ -199,6 +199,36 @@ let routes = [
                 meta: {title: i18n.post.cover + ' | ' + appName}
             },
             {
+                path: '/team',
+                component: require('./views/team/Index.vue').default,
+                meta: {title: i18n.team.new + ' | ' + appName}
+            },
+            {
+                path: '/team/new',
+                component: require('./views/team/Index.vue').default,
+                meta: {title: i18n.team.new + ' | ' + appName}
+            },
+            {
+                path: '/team/published',
+                component: require('./views/team/Published.vue').default,
+                meta: {title: i18n.team.published_box + ' | ' + appName}
+            },
+            {
+                path: '/team/draft',
+                component: require('./views/team/Draft.vue').default,
+                meta: {title: i18n.team.drafts + ' | ' + appName}
+            },
+            {
+                path: '/team/:slug/edit',
+                component: require('./views/team/Edit').default,
+                meta: {title: i18n.team.edit + ' | ' + appName}
+            },
+            {
+                path: '/team/:slug/cover',
+                component: require('./views/team/Cover').default,
+                meta: {title: i18n.team.cover + ' | ' + appName}
+            },
+            {
                 path: '/category',
                 component: require('./views/category/Category').default,
                 meta: {title: i18n.category.categories + ' | ' + appName}
@@ -274,10 +304,9 @@ let routes = [
                 path: '/:slug',
                 component: require('./views/page/View.vue').default,
                 meta: {title: appName}
-            },            
-            {
-                path: '/info/:slug',
-                component: require('./views/default/Info.vue').default,
+            },             {
+                path: '/team/:slug',
+                component: require('./views/team/View.vue').default,
                 meta: {title: appName}
             }
         ]

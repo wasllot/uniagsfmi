@@ -10,7 +10,15 @@
     <link rel="icon" href="/{{ config('config.logo') }}">
     <meta name="theme-color" content="#ffffff">
     <link href="{{ mix('/css/style.css') }}" rel="stylesheet">
-    <!-- <link href="{{ mix('/css/colors/light.css') }}" id="theme" rel="stylesheet"> -->
+    <link href="{{ asset('/css/plugins/animate.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('/css/plugins/prism-coy.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('/css/normalize.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dosis&display=swap" rel="stylesheet">
+
+        <!-- <link href="{{ mix('/css/colors/light.css') }}" id="theme" rel="stylesheet"> -->
     <style>
 .preloader {
   width: 100%;
@@ -210,6 +218,20 @@ a.link:focus {
 <script src="/js/lang"></script>
 <script src="{{ mix('/js/plugin.js') }}"></script>
 <script src="{{ asset('/js/summernote-es-ES.js') }}"></script>
+
+
+<!-- Required Js -->
+<script src="{{ asset('/js/pcoded.min.js') }}"></script>
+
+<!-- prism Js -->
+<script src="{{ asset('/js/plugins/prism.js') }}"></script>
+
+<script src="{{ asset('/js/horizontal-menu.js') }}"></script>
+<script src="{{ asset('/js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('/js/isotope.pkgd.min.js') }}"></script>
+
+
+<script src="{{ asset('/js/analytics.js') }}"></script>
 <script src="{{ mix('/js/app.js') }}"></script>
 <script>
     $(document).ready(function(){
@@ -225,6 +247,153 @@ a.link:focus {
 
         window.location.href="https://wa.me/584167813210";
     }
+
+</script>
+<script>
+
+    (function() {
+        if ($('#layout-sidenav').hasClass('sidenav-horizontal') || window.layoutHelpers.isSmallScreen()) {
+            return;
+        }
+        try {
+            window.layoutHelpers._getSetting("Rtl")
+            window.layoutHelpers.setCollapsed(
+                localStorage.getItem('layoutCollapsed') === 'true',
+                false
+            );
+        } catch (e) {}
+    })();
+
+    $(function() {
+        $('#layout-sidenav').each(function() {
+            new SideNav(this, {
+                orientation: $(this).hasClass('sidenav-horizontal') ? 'horizontal' : 'vertical'
+            });
+        });
+        $('body').on('click', '.layout-sidenav-toggle', function(e) {
+            e.preventDefault();
+            window.layoutHelpers.toggleCollapsed();
+            if (!window.layoutHelpers.isSmallScreen()) {
+                try {
+                    localStorage.setItem('layoutCollapsed', String(window.layoutHelpers.isCollapsed()));
+                } catch (e) {}
+            }
+        });
+    });
+
+
+    $(document).ready(function() {
+
+      setTimeout(function(){
+
+
+        $("#pcoded").pcodedmenu({
+            themelayout: 'horizontal',
+            MenuTrigger: 'hover',
+            SubMenuTrigger: 'hover',
+        });
+
+            $('#productsCarousel').owlCarousel({
+                  loop: true,
+                  items : 3,
+                  margin:0,
+                  nav : false, 
+                  loop: true,
+                  items : 1,
+                  dots:true,
+                  responsive:{
+                        0:{
+                            items:1,
+                            nav:false
+                        },
+                        600:{
+                            items:2,
+                            nav:false
+                        },
+                        1000:{
+                            items:3,
+                            nav:false,
+                            loop:false
+                        }
+                    },
+
+            }); 
+            
+
+            $("#news-slider6").owlCarousel({
+                items : 3,
+                itemsDesktop:[1199,3],
+                itemsDesktopSmall:[980,2],
+                itemsMobile : [600,1],
+                pagination:false,
+                navigationText:false,
+                responsive:{
+                    0:{
+                        items:1,
+                        nav:false
+                    },
+                    600:{
+                        items:2,
+                        nav:false
+                    },
+                    1000:{
+                        items:3,
+                        nav:false,
+                        loop:false
+                    }
+                },
+            });
+
+            $("#news-slider7").owlCarousel({
+                items : 3,
+                itemsDesktop:[1199,3],
+                itemsDesktopSmall:[980,2],
+                itemsMobile : [600,1],
+                pagination:false,
+                navigationText:false,
+                responsive:{
+                    0:{
+                        items:1,
+                        nav:false
+                    },
+                    600:{
+                        items:2,
+                        nav:false
+                    },
+                    1000:{
+                        items:3,
+                        nav:false,
+                        loop:false
+                    }
+                },
+
+            });
+
+
+            $('.filters ul li').click(function(){
+              $('.filters ul li').removeClass('active');
+              $(this).addClass('active');
+              
+              var data = $(this).attr('data-filter');
+              $grid.isotope({
+                filter: data
+              })
+            });
+
+            var $grid = $(".grid").isotope({
+              itemSelector: ".all",
+              percentPosition: true,
+              masonry: {
+                columnWidth: ".all"
+              }
+            })
+       
+       
+      }, 2000);
+
+        
+
+    });
 
 </script>
 </body>

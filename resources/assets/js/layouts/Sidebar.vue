@@ -32,6 +32,13 @@
                             <i class="far fa-share-square fa-fw"></i>
                             <span class="hide-menu">{{ trans('post.posts') }}</span>
                         </router-link>
+                    </li>                    
+
+                    <li v-if="hasPermission('access-page')">
+                        <router-link to="/team/published" exact>
+                            <i class="far fa-share-square fa-fw"></i>
+                            <span class="hide-menu">{{ trans('team.teams') }}</span>
+                        </router-link>
                     </li>
                     <li v-if="hasPermission('access-category')">
                         <router-link to="/category" exact>

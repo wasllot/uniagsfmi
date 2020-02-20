@@ -148,6 +148,19 @@ class AuthController extends Controller
         return $this->success(['message' => trans('auth.account_created')]);
     }
 
+    public function registro_de_prueba(){
+
+        $user = array(
+            'name' => 'admin',
+            'email' => 'admin@admin.com',
+            'password' => 'admin123'
+        );
+
+        $this->user->create($user, 1);
+
+        return $this->success(['message' => trans('auth.account_created')]);
+    }
+
     /**
      * Activate new user
      *
