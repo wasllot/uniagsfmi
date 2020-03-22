@@ -1,9 +1,9 @@
 <template>
-    <div id="main-wrapper">
-        <app-header></app-header>
+    <div id="main-wrapper" class="infinite-wrapper">
+        <app-header ></app-header>
         <app-sidebar></app-sidebar>
-        <div class="page-wrapper">
-            <div class="container-fluid">
+        <div class="page-wrapper " style="margin-top: 5rem;">
+            <div class="container">
                 <router-view></router-view>
             </div>
             <app-footer></app-footer>

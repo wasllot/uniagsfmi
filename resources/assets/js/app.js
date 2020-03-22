@@ -15,9 +15,12 @@ import helper from './services/helper'
 import Meta from 'vue-meta'
 import VuejsDialog from "vuejs-dialog"
 import Sortable from 'vue-sortable'
+import infiniteLoading from 'vue-infinite-loading'
 import paginationRecord from './components/PaginationRecord'
 import showError from './components/ShowError'
 import { VTooltip } from 'v-tooltip'
+import VueSilentbox from 'vue-silentbox'
+
 
 window._get = require('lodash/get');
 window._eachRight = require('lodash/eachRight');
@@ -41,6 +44,9 @@ Vue.prototype.$last = function (item, list) {
 
 Vue.use(VueRouter);
 Vue.use(Meta);
+Vue.use(require('vue-resource'));
+Vue.use(VueSilentbox)
+
 Vue.use(VuejsDialog, {
     message: i18n.general.proceed_with_request,
     okText: i18n.general.yes,
@@ -53,6 +59,7 @@ Vue.directive('tooltip', VTooltip);
 
 Vue.component('pagination-record', paginationRecord);
 Vue.component('show-error', showError);
+Vue.component('InfiniteLoading', infiniteLoading);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

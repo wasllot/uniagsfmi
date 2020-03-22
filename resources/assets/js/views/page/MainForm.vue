@@ -111,7 +111,7 @@
         },
         mounted() {
       
-	        helper.showSpinner();
+	        
 	        axios.get('/api/page/main')
 	            .then(response => response.data)
 	            .then(response => {
@@ -129,7 +129,7 @@
 	            })
 	            .catch(error => {
 	                helper.showDataErrorMsg(error);
-	                helper.hideSpinner();
+	                
 	            });
             
         },

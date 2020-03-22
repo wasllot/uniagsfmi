@@ -51,7 +51,7 @@
             <button type="button" @click="saveAsDraft" class="btn btn-info waves-effect waves-light">
                 <i class="fas fa-edit"></i> {{ trans('team.save_as_draft') }}
             </button>
-            <router-link to="/post/draft" v-if="teamForm.id" class="btn btn-warning waves-effect waves-light">
+            <router-link to="/team/draft" v-if="teamForm.id" class="btn btn-warning waves-effect waves-light">
                 <i class="fas fa-times"></i> {{ trans('team.cancel') }}
             </router-link>
             <button type="submit" class="btn btn-success waves-effect waves-light">
@@ -85,7 +85,7 @@
             };
         },
         mounted() {
-            axios.get('/api/post/pre-requisite')
+            axios.get('/api/team/pre-requisite')
                 .then(response => response.data)
                 .then(response => {
                     this.categories = response;
@@ -94,7 +94,7 @@
                     helper.showDataErrorMsg(error);
                 });
 
-            axios.post('/api/post/statistics')
+            axios.post('/api/team/statistics')
                 .then(response => response.data)
                 .then(response => {
                     this.statistics.published = response.published;
@@ -106,13 +106,14 @@
 
             if (this.slug) {
                 helper.showSpinner();
-                axios.get('/api/post/' + this.slug)
+                axios.get('/api/team/' + this.slug)
                     .then(response => response.data)
                     .then(response => {
-                        this.teamForm.title = response.post.title;
-                        this.teamForm.body = response.post.body;
-                        this.teamForm.id = response.post.id;
-                        this.teamForm.category_id = response.post.category_id;
+                        this.teamForm.title = response.team.title;
+                        this.teamForm.subtitle = response.team.subtitle;
+                        this.teamForm.body = response.team.body;
+                        this.teamForm.id = response.team.id;
+                        this.teamForm.category_id = response.team.category_id;
                         helper.hideSpinner();
                     })
                     .catch(error => {
@@ -124,12 +125,12 @@
         methods: {
             submit() {
                 this.teamForm.is_draft = 0;
-                this.teamForm.body = this.cleanHTML(this.teamForm.body);
-                this.teamForm.body = this.addAttributes(this.teamForm.body);
-                this.teamForm.post('/api/post/new')
+               /* this.teamForm.body = this.cleanHTML(this.this.teamForm.body);
+                this.teamForm.body = this.addAttributes(this.teamForm.body);*/
+                this.teamForm.post('/api/team/new')
                     .then(response => {
-                        toastr.success(response.post);
-                        this.$router.push('/post/published');
+                        toastr.success(response.team);
+                        this.$router.push('/team/published');
                     })
                     .catch(error => {
                         helper.showErrorMsg(error);
@@ -137,12 +138,12 @@
             },
             saveAsDraft() {
                 this.teamForm.is_draft = 1;
-                this.teamForm.body = this.cleanHTML(this.teamForm.body);
-                this.teamForm.body = this.addAttributes(this.teamForm.body);
-                this.teamForm.post('/api/post/new')
+          /*      this.teamForm.body = this.cleanHTML(this.teamForm.body);
+               this.teamForm.body = this.addAttributes(this.teamForm.body)*/;
+                this.teamForm.post('/api/team/new')
                     .then(response => {
-                        toastr.success(response.post);
-                        this.$router.push('/post/draft');
+                        toastr.success(response.team);
+                        this.$router.push('/team/draft');
                     })
                     .catch(error => {
                         helper.showErrorMsg(error);

@@ -1,47 +1,37 @@
 <template>
-    <div v-if="team">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12 m-t-30">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-9">
-                                    <span class="text-muted card-caps">
-                                        {{ categoryName }} <span v-if="categoryName">/</span> {{team.created_at }}
-                                    </span>
-                                    <h1 class="card-title post-title">{{ teamtitle }}</h1>
-                                    <div class="card-text" v-html="team.body"></div>
-                                    <div class="card-text" v-if="hasRole('admin')">
-                                        <router-link :to="`/team/${team.slug}/edit`"
-                                                     class="btn btn-info btn-sm"
-                                                     v-tooltip="trans('post.edit_published')">
-                                            <i class="fas fa-edit"></i>
-                                        </router-link>
-                                    </div>
-                                </div>
-                                <div class="col-md-3" v-if="team.body">
-                                    <div class="text-muted card-caps mb-1">{{ trans('general.share') }}</div>
-                                    <social-sharing
-                                            :url="`${getConfig('app_url')}/${categorySlug}/${team.slug}`"
-                                            :title="`${team.title}`">
-                                    </social-sharing>
-                                    <div class="text-muted card-caps mt-3 mb-1">{{ trans('category.categories') }}</div>
-                                    <div class="list-group">
-                                        <a href="#" @click="searchCategory(category.id)" v-for="category in categories" class="list-group-item ist-group-item-action d-flex justify-content-between align-items-center">
-                                            {{ category.name }}
-                                            <span class="badge badge-primary badge-pill">{{ category.posts_count }}</span>
-                                        </a>
-                                    </div>
-                                    <div class="text-muted card-caps mt-3 mb-1">{{ trans('general.contact_info') }}</div>
-                                    <b>{{ getConfig('contact_info') }}</b>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <div v-if="team" id="wrapper">
+
+            <div class="header">
+
+               <!--<span class="bgimage" :style="{ 'background' : '#1B2030 url(\'' + getBackground + '\') 50% 0 no-repeat' }"></span>-->
+      
+                <div class="info">
+
+                  <h3>
+
+                      <a href="#">{{ team.subtitle }}</a>
+
+                  </h3>
+
+                  <br>
+
+                  <h1 class="text-white">{{ team.title }}</h1>
+
+                  <br>
+
+
                 </div>
-            </div>
-        </div>
+
+              </div>
+
+              <div class="container-fluid">
+
+
+                <div v-html="team.body"></div>
+                  
+
+              </div> 
+        
     </div>
     <div v-else>
         <page-not-found></page-not-found>
@@ -89,7 +79,7 @@
             this.category = this.$route.params.category;
             this.slug = this.$route.params.slug;
             helper.showSpinner();
-            axios.get('/api/teams/' + this.category + '/' + this.slug)
+            axios.get('/api/teams/details/' + this.slug)
                 .then(response => response.data)
                 .then(response => {
                     this.team = response.team;

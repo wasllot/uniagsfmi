@@ -13,7 +13,7 @@ class TeamRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -28,7 +28,6 @@ class TeamRequest extends FormRequest
             'title' => 'sometimes|required',
             'name' => 'sometimes|required',
             'slogan' => 'sometimes|required',
-            'img' => 'sometimes|required',
             'body' => 'sometimes|required',
             'slug' => 'sometimes|required',
             'category_id' => 'sometimes|required',
@@ -49,8 +48,7 @@ class TeamRequest extends FormRequest
             'category_id' => trans('category.category'),
             'name' => trans('team.name'),
             'slogan' => trans('team.slogan'),
-            'slug' => trans('team.slug'),
-            'img' => trans('team.img')
+            'slug' => trans('team.slug')
         ];
     }
 }

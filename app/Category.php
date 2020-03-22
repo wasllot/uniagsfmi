@@ -35,6 +35,16 @@ class Category extends Model
     public function posts()
     {
         return $this->hasMany(Post::class);
+    }    
+
+    /**
+     * Get the category portfolio items.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
+     */
+    public function portfolioItems()
+    {
+        return $this->hasMany(PortfolioItem::class);
     }
 
     /**

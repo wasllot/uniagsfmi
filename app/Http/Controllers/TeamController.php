@@ -23,7 +23,7 @@ class TeamController extends Controller
     protected $request;
 
     /**
-     * @var PostRepository
+     * @var TeamRepository
      */
     protected $repo;
 
@@ -58,7 +58,7 @@ class TeamController extends Controller
         $this->repo = $repo;
         $this->activity = $activity;
         $this->category = $category;
-        //$this->middleware('permission:access-post')->except(['getPublicPosts', 'getPublicPost', 'getPostSlider']);
+        $this->middleware('permission:access-page')->except(['getTeams', 'preRequisite', 'getPublishedList', 'show']);
     }
 
     /**
@@ -85,7 +85,7 @@ class TeamController extends Controller
      */
     public function preRequisite()
     {
-        $this->authorize('create', Team::class);
+        //$this->authorize('create', Team::class);
 
         return generateSelect($this->category->list());
     }
@@ -102,7 +102,7 @@ class TeamController extends Controller
 
     public function store(TeamRequest $request)
     {
-        $this->authorize('create', Team::class);
+        //$this->authorize('create', Team::class);
 
         $team = $this->repo->create($this->request->all());
 
@@ -125,7 +125,7 @@ class TeamController extends Controller
      */
     public function uploadImage(PostRequest $request)
     {
-        $this->authorize('create', Post::class);
+        /*$this->authorize('create', Post::class);*/
 
         $upload_path = config('system.upload_path.images');
         $extension = request()->file('file')->getClientOriginalExtension();
@@ -178,21 +178,7 @@ class TeamController extends Controller
     }    
 
     /**
-     * Get slider published posts
-     *
-     * @return JsonResponse
-     */
-    public function getPostSlider()
-    {
-        $grid = $this->repo->getPostsSlider(4);
-
-        $posts = $this->repo->getPostsSlider(6);
-
-        return $this->success(compact('grid', 'posts'));
-    }    
-
-    /**
-     * Get post details
+     * Get team details
      *
      * @param string $slug
      *
@@ -202,15 +188,15 @@ class TeamController extends Controller
      */
     public function show($slug)
     {
-        $post = $this->repo->getBySlug($slug);
+        $team = $this->repo->getBySlug($slug);
 
-        $this->authorize('show', $post);
+        //$this->authorize('show', $team);
 
-        return $this->success(compact('post'));
+        return $this->success(compact('team'));
     }
 
     /**
-     * Update post cover image
+     * Update team cover image
      *
      * @param int $id
      *
@@ -220,12 +206,12 @@ class TeamController extends Controller
      */
     public function uploadCover($id)
     {
-        $post = $this->repo->findOrFail($id);
+        $team = $this->repo->findOrFail($id);
 
-        $this->authorize('update', $post);
+        /*$this->authorize('update', $team);*/
 
         $image_path = config('system.upload_path.images') . '/';
-        $image = $post->cover;
+        $image = $team->cover;
 
         if ($image && File::exists($image) && $image != config('config.default_cover')) {
             File::delete($image);
@@ -238,23 +224,23 @@ class TeamController extends Controller
         $img->resize(500, null, function ($constraint) {
             $constraint->aspectRatio();
         });
-        $img->crop(500, 250);
+        $img->crop(500, 500);
         $img->save($image_path . $filename . "." . $extension);
-        $post->cover = $image_path . $filename . "." . $extension;
-        $post->save();
+        $team->cover = $image_path . $filename . "." . $extension;
+        $team->save();
 
         $this->activity->record([
             'module' => $this->module,
-            'module_id' => $post->id,
+            'module_id' => $team->id,
             'sub_module' => 'cover',
             'activity' => 'uploaded'
         ]);
 
-        return $this->success(['message' => trans('post.cover_uploaded'), 'image' => $image_path . $filename . "." . $extension]);
+        return $this->success(['message' => trans('team.cover_uploaded'), 'image' => $image_path . $filename . "." . $extension]);
     }
 
     /**
-     * Remove post cover image
+     * Remove team cover image
      *
      * @param int $id
      *
@@ -264,31 +250,31 @@ class TeamController extends Controller
      */
     public function removeCover($id)
     {
-        $post = $this->repo->findOrFail($id);
+        $team = $this->repo->findOrFail($id);
 
-        $this->authorize('update', $post);
+        $this->authorize('update', $team);
 
-        $image = $post->cover;
+        $image = $team->cover;
 
         if ($image && File::exists($image) && $image != config('config.default_cover')) {
             File::delete($image);
         }
 
-        $post->cover = null;
-        $post->save();
+        $team->cover = null;
+        $team->save();
 
         $this->activity->record([
             'module' => $this->module,
-            'module_id' => $post->id,
+            'module_id' => $team->id,
             'sub_module' => 'cover',
             'activity' => 'removed'
         ]);
 
-        return $this->success(['message' => trans('post.cover_removed')]);
+        return $this->success(['message' => trans('team.cover_removed')]);
     }
 
     /**
-     * Delete post
+     * Delete team
      *
      * @param string $slug
      *
@@ -298,25 +284,25 @@ class TeamController extends Controller
      */
     public function destroy($slug)
     {
-        $post = $this->repo->getBySlug($slug);
+        $team = $this->repo->getBySlug($slug);
 
-        $this->authorize('delete', $post);
+        $this->authorize('delete', $team);
 
         $this->activity->record([
-            'module' => 'post',
-            'sub_module' => $post->is_draft ? 'draft' : 'post',
-            'module_id' => $post->id,
+            'module' => 'team',
+            'sub_module' => $team->is_draft ? 'draft' : 'team',
+            'module_id' => $team->id,
             'activity' => 'deleted'
         ]);
 
-        $image = $post->cover;
+        $image = $team->cover;
 
         if ($image && File::exists($image) && $image != config('config.default_cover')) {
             File::delete($image);
         }
 
-        $post->delete();
+        $team->delete();
 
-        return $this->success(['post' => trans('post.deleted', ['type' => trans('post.post')])]);
+        return $this->success(['team' => trans('team.deleted', ['type' => trans('team.team')])]);
     }
 }

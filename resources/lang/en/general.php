@@ -64,5 +64,11 @@ return [
     'upload' => 'Upload',
     'yes' => 'Yes',
     'email_sent' => 'Email sent.',
-    'email_not_sent' => 'Email has been not sent.'
+    'email_not_sent' => 'Email has been not sent.',
+    'blog' => 'Blog',
+    'title' => 'Title',
+    'subtitle' => 'Subtitle',
+    'list' => 'List',
+    'portfolio' => 'Portfolio'
+    
 ];

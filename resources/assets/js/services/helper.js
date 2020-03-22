@@ -217,7 +217,7 @@ export default {
     },
 
     showErrorMsg(error) {
-        this.setLastActivity();
+       /* this.setLastActivity();
         if (error.hasOwnProperty("error")) {
             toastr.error(i18n.general[error.error]);
             if (error.error === 'token_expired') {
@@ -228,7 +228,7 @@ export default {
         } else if (error.hasOwnProperty("response") && error.response.status === 500) {
             toastr.error('500 Internal Server Error');
         } else if (error.errors.hasOwnProperty("message"))
-            toastr.error(error.errors.message[0]);
+            toastr.error(error.errors.message[0]);*/
     },
 
     limitWords(textToLimit, wordLimit) {
@@ -251,10 +251,10 @@ export default {
     },
 
     showSpinner() {
-        document.getElementsByClassName("preloader")[0].style.display = "block";
+        /*document.getElementsByClassName("preloader")[0].style.display = "block";*/
     },
 
     hideSpinner() {
-        document.getElementsByClassName("preloader")[0].style.display = "none";
+        /*document.getElementsByClassName("preloader")[0].style.display = "none";*/
     }
 }

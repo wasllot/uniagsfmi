@@ -480,7 +480,6 @@ ul#themecolors {
   color: $bodytext;
   left: 0px;
   padding: 17px 15px;
-  position: absolute;
   right: 0;
   border-top: 1px solid $border;
   background: $white;
@@ -1254,7 +1253,7 @@ Form Material page
   padding: 10px 10px 10px 0;
   display: block;
   border: none;
-  font-family: $bodyfont;
+  
   border-radius: 0px;
   border-bottom: 1px solid $form-brd;
   &:focus {
@@ -2779,7 +2778,7 @@ Horizontal Timeline page
   border: 1px solid rgba(120, 130, 140, .13);
   padding: 8px 16px;
   height: auto;
-  font-family: $bodyfont;
+  
   font-weight: 400;
   border-radius: 0;
 }
@@ -3223,7 +3222,6 @@ session ideal timeout page
   background: $themecolor;
   border: 3px solid $themecolor;
   color: #fff;
-  font-family: arial, sans-serif;
   text-align: center;
   font-size: 12px;
   padding: 10px;
@@ -3712,7 +3710,6 @@ Error Page
 
 .error-box {
   height: 100%;
-  position: fixed;
   background: url(/images/error-bg.jpg) no-repeat center center #fff;
   width: 100%;
   .footer {

@@ -1,41 +1,67 @@
 <template>
-    <div v-if="page">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12 m-t-30">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-9">
-                                    <h1 class="card-title post-title">{{ page.title }}</h1>
-                                    <div class="card-text" v-html="page.body"></div>
-                                </div>
-                                <div class="col-md-3" v-if="page.body">
-                                    <div class="text-muted card-caps mb-1">{{ trans('general.share') }}</div>
-                                    <social-sharing
-                                            :url="`${getConfig('app_url')}/${page.slug}`"
-                                            :title="`${page.title}`">
-                                    </social-sharing>
-                                    <div class="text-muted card-caps mt-3 mb-1">{{ trans('category.categories') }}</div>
-                                    <div class="list-group">
-                                        <a href="#" @click="searchCategory(category.id)" v-for="category in categories" class="list-group-item ist-group-item-action d-flex justify-content-between align-items-center">
-                                            {{ category.name }}
-                                            <span class="badge badge-primary badge-pill">{{ category.posts_count }}</span>
-                                        </a>
-                                    </div>
-                                    <div class="text-muted card-caps mt-3 mb-1">{{ trans('general.contact_info') }}</div>
-                                    <b>{{ getConfig('contact_info') }}</b>
-                                </div>
-                            </div>
+    <div  v-if="page">
+
+        <section class="section db p120 sec" :style="{ 'background-image' : 'url(\'' + page.cover + '\')' }">
+        <div class="overlay" style="z-index:0 !important;"></div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="tagline-message page-title text-center">
+                            <h3>{{page.title}}</h3>
+                            <ul class="breadcrumb">
+                                <li><a href="/">Inicio</a></li>
+                                <li class="active">{{page.title}}</li>
+                            </ul>
                         </div>
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </section><!-- end section -->
+        <section class="section nopadtop ">
+            <div class="container">
+                <div class="boxed boxedp4">
+                    <div class="row">
+
+                        <div class="col-lg-8">
+                            
+                            <div v-html="page.body"></div>
+                            
+                        </div>
+                        <div class="col-lg-4">
+
+                            <div class="widget clearfix">
+
+                                <h2>Páginas relacionadas</h2> 
+
+                                <div class="tags-widget">
+
+                                    <ul class="" style="list-style: none;" v-if="pages.total">
+
+                                        <li v-for="p in pages.data" :key="p.id"><a :href="`${p.slug}`" class="" >{{p.title}}</a></li>
+                                    </ul>
+
+                                </div>
+
+                            </div>
+                            
+                        </div>
+                        
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+
+
+       
+
     </div>
+
     <div v-else>
         <page-not-found></page-not-found>
     </div>
+
 </template>
 
 <script>
@@ -68,6 +94,10 @@
             return {
                 slug: '',
                 page: {},
+                pages: {
+                    total: 0,
+                    data: []
+                },
                 documentTitle: '',
                 categories: []
             };
@@ -79,6 +109,7 @@
                 .then(response => response.data)
                 .then(response => {
                     this.page = response.page;
+                    this.pages = response.pages;
                     this.categories = response.categories;
                     if (this.page) {
                         this.documentTitle = `${this.page.title} | ${helper.getConfig('company_name')}`;
@@ -92,6 +123,9 @@
                     helper.showDataErrorMsg(error);
                     helper.hideSpinner();
                 });
+
+
+
         },
         methods: {
             getConfig(name) {
@@ -103,5 +137,16 @@
                 this.$router.push('/search');
             }
         }
-    }
+    };
 </script>
+<style>
+    .sec{
+        background-size: cover;
+        background-position: top;
+        height: 50vh;
+    }
+
+    .sec .page-title{
+        margin-top: 10% !important;
+    }
+</style>

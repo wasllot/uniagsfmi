@@ -1,16 +1,23 @@
 <template>
-    <div id="main-wrapper">
-        <app-header :toggle="false"></app-header>
-        <div class="page-wrapper" style="margin-left:0">
+   
+    <div class="wrapper">
+
+
+        <app-header></app-header>
+    
+
+        <div class="" style="margin-left:0">
             <router-view></router-view>
             <back-to-top visibleOffset="200"></back-to-top>
-            <app-footer></app-footer>
+            
         </div>
+
+        <app-footer></app-footer>
     </div>
 </template>
 
 <script>
-    import AppHeader from './Header'
+    import AppHeader from './GuestHeader'
     import AppFooter from './GuestFooter'
     import BackToTop from '../components/BackToTop.vue'
 
@@ -25,6 +32,9 @@
         },
         mounted() {
             helper.notification();
+
+
+
         }
     }
 </script>

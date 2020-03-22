@@ -29,7 +29,6 @@ Route::get('/js/lang', function () {
     exit();
 })->name('assets.lang');
 
-Route::get('/test', 'AuthController@registro_de_prueba');
 
 Route::get('/{vue?}', function () {
     if(Crawler::isCrawler()) {
@@ -38,5 +37,6 @@ Route::get('/{vue?}', function () {
         $article = App\Post::filterByCategoryAndSlug($category, Request::segment(2))->first();
         return view('seo')->with('article', $article);
     }
-    return view('home');
+    return view('frontend');
 })->where('vue', '[\/\w\.-]*')->name('home');
+

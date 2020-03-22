@@ -3,7 +3,7 @@
 namespace App;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * App\Profile
@@ -27,7 +27,8 @@ class Page extends Model
         'title',
         'body',
         'slug',
-        'cover'
+        'cover',
+        'menu_id'
     ];
 
     /**

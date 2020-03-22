@@ -122,7 +122,7 @@ class TeamRepository
             throw ValidationException::withMessages(['message' => trans('team.not_found')]);
         }
 
-        return $post;
+        return $teams;
     }
 
     /**
@@ -140,7 +140,7 @@ class TeamRepository
 
         if ($id) {
 
-            $team = $this->team->filterById($id)->filterByUserId(\Auth::user()->id)->first();
+            $team = $this->team->filterById($id)->first();
             if (!$team) {
                 throw ValidationException::withMessages(['message' => trans('team.invalid_action')]);
             }
@@ -150,8 +150,6 @@ class TeamRepository
         $team->fill([
             'title' => $params['title'],
             'subtitle' => $params['subtitle'],
-            'cover' => $params['cover'],
-            'img' => $params['img'],
             'body' => $params['body'],
             'category_id' => $params['category_id'],
         ]);

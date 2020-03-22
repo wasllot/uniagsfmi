@@ -1,134 +1,102 @@
 <template>
-<div>
-        <header class="topbar is_stuck" style="position: fixed;top:0;width:100%">
+<div v-if="$route.name !=='main'">
 
-        <nav class="navbar top-navbar navbar-expand-md navbar-light">
-            <div class="navbar-collapse">
-                <ul class="nav navbar-nav navbar-logo mr-auto">
-                    <li class="nav-item">
-                        <router-link class="nav-link nav-brand waves-effect waves-dark" to="/">
-                            <img :src="getLogo()" alt="Logo" class="logo mr-2">
-                            <!-- <b>{{ getConfig('company_name') }}</b> -->
-                        </router-link>
-                    </li>
-                    <li v-if="toggle" class="nav-item">
-                        <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark">
-                            <i class="fas fa-bars fa-fw"></i>
-                        </a>
-                    </li>
-                    <li v-if="toggle" class="nav-item">
-                        <a class="nav-link nav-toggler sidebartoggler hidden-sm-down text-muted waves-effect waves-dark">
-                            <i class="fas fa-bars fa-fw"></i>
-                        </a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav mr-0 my-lg-0">
-                    <li class="nav-item" v-if="$route.name ==='main'">
-                        <scroll-link class="nav-link text-muted waves-effect waves-dark" href="#portfolio">
-                            Portafolio
-                        </scroll-link>
-                    </li>
+   <header class="header">
 
-                    <li class="nav-item" v-if="$route.name ==='main'">
-                        <scroll-link class="nav-link text-muted waves-effect waves-dark" href="#our-process">
-                            Servicios
-                        </scroll-link>
-                    </li>                     
+        <div class="">
+            <nav class="navbar navbar-default yamm ">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                  
+                </div>
 
-                    <li class="nav-item" v-if="$route.name ==='main'">
-                        <scroll-link class="nav-link text-muted waves-effect waves-dark" href="#blog">
-                            Blog
-                        </scroll-link>
-                    </li>                    
+                <div id="navbar" class="navbar-collapse collapse">
 
-                    <li class="nav-item" v-if="$route.name ==='main'">
-                        <scroll-link class="nav-link text-muted waves-effect waves-dark" href="#about-us">
-                            Acerca
-                        </scroll-link>
-                    </li>                    
+                    <ul class="nav navbar-nav navbar-logo mr-auto">
 
-                    <li v-if="getConfig('facebook_group')" class="nav-item">
-                        <a rel="nofollow" target="_blank" :href="getConfig('facebook_group')" class="nav-link text-muted waves-effect waves-dark">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </li>
-                    <li v-if="$route.name !=='search'" class="nav-item dropdown" ref="li">
-                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href=""
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-search"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown" ref="div">
-                            <ul>
-                                <li>
-                                    <div class="drop-title">
-                                        <form class="custom-app-search" @keydown.enter.prevent="search()">
-                                            <input type="text" class="form-control" v-model="search_query" :placeholder="trans('general.search_for')">
-                                        </form>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-                <ul class="navbar-nav mr-0 my-lg-0" >
-
-                    
-                </ul>
-                <ul v-if="isAuth() && !getTwoFactorCode()" class="navbar-nav mr-0 my-lg-0">
+                        <router-link class="nav-link nav-brand" to="/">
+                                <img :src="getLogo()" alt="Logo" class="logo mr-2">
+                                
+                            </router-link>
+                        
+                        <li v-if="toggle" class="nav-item">
+                            <a class="nav-link nav-toggler hidden-md-up">
+                                <i class="fas fa-bars fa-fw"></i>
+                            </a>
+                        </li>
+                        <li v-if="toggle" class="nav-item">
+                            <a class="nav-link nav-toggler sidebartoggler hidden-sm-down">
+                                <i class="fas fa-bars fa-fw"></i>
+                            </a>
+                        </li>
+                    </ul>
 
 
-                    <li class="nav-item">
-                        <router-link class="nav-link text-muted waves-effect waves-dark" :to="'/home'">
-                           Panel
-                        </router-link>
-                    </li>
-                    <li class="nav-item dropdown" v-if="$route.name !=='main'">
-                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href=""
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="username">{{ getAuthUser('full_name') }}</span>
-                            <img :src="getAuthUser('avatar')" alt="Avatar" class="profile-pic ml-2">
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right animated bounceInDown">
-                            <ul class="dropdown-user">
-                                <li>
-                                    <div class="dw-user-box text-center">
-                                        <div class="u-img">
-                                            <img :src="getAuthUser('avatar')" alt="Avatar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <router-link  :to="'/'">
+                               Volver
+                            </router-link>
+                        </li>
+                        <li class="nav-item dropdown" v-if="isAuth() && !getTwoFactorCode()">
+                            <a class="nav-link dropdown-toggle" href=""
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="username">{{ getAuthUser('full_name') }}</span>
+                                <img :src="getAuthUser('avatar')" alt="Avatar" class="profile-pic ml-2">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right animated bounceInDown">
+                                <ul class="dropdown-user">
+                                    <li>
+                                        <div class="dw-user-box text-center">
+                                            <div class="u-img">
+                                                <img :src="getAuthUser('avatar')" alt="Avatar">
+                                            </div>
+                                            <div class="u-text">
+                                                <h4>{{ getAuthUser('full_name') }}</h4>
+                                                <h6>{{ getAuthUser('email') }}</h6>
+                                            </div>
                                         </div>
-                                        <div class="u-text">
-                                            <h4>{{ getAuthUser('full_name') }}</h4>
-                                            <h6 class="text-muted">{{ getAuthUser('email') }}</h6>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li role="separator" class="divider"></li>
-                                <li>
-                                    <router-link to="/profile">
-                                        <i class="fas fa-user"></i>
-                                        {{ trans('user.update_profile') }}
-                                    </router-link>
-                                </li>
-                                <li role="separator" class="divider"></li>
-                                <li>
-                                    <router-link to="/change-password">
-                                        <i class="fas fa-cogs"></i>
-                                        {{ trans('user.change_password') }}
-                                    </router-link>
-                                </li>
-                                <li role="separator" class="divider"></li>
-                                <li>
-                                    <a href="#" @click.prevent="logout">
-                                        <i class="fas fa-power-off"></i>
-                                        {{ trans('auth.logout') }}
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+                                    </li>
+                                    <li role="separator" class="divider"></li>
+                                    <li>
+                                        <router-link to="/profile">
+                                            <i class="fas fa-user"></i>
+                                            {{ trans('user.update_profile') }}
+                                        </router-link>
+                                    </li>
+                                    <li role="separator" class="divider"></li>
+                                    <li>
+                                        <router-link to="/change-password">
+                                            <i class="fas fa-cogs"></i>
+                                            {{ trans('user.change_password') }}
+                                        </router-link>
+                                    </li>
+                                    <li role="separator" class="divider"></li>
+                                    <li>
+                                        <a href="#" @click.prevent="logout">
+                                            <i class="fas fa-power-off"></i>
+                                            {{ trans('auth.logout') }}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+
+
+
+
+                    </ul>
+                </div>
+            </nav><!-- end navbar -->
+        </div><!-- end container -->
     </header>
+    
 </div>
 
 
@@ -147,7 +115,21 @@
         data() {
             return {
                 search_query: '',
+                menus: []
             }
+        },
+        mounted() {
+
+            axios
+                .get('/api/menus')
+                .then(response => response.data)
+                .then(response => {
+
+                    this.menus = response;
+
+                }).catch(error => {
+                    helper.showDataErrorMsg(error);
+                });
         },
         components: {
             scrollLink,
@@ -198,5 +180,11 @@
                 if (this.$route.name !=='main') return helper.showSpinner();
             }
         }
-    }
+    };
 </script>
+
+<style>
+    .nav-brand .logo, .nav-link img{
+        width: 40px;
+    }
+</style>

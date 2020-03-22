@@ -23,7 +23,7 @@
         </div>
         <pagination-record
                 :page-length.sync="filterPostForm.page_length"
-                :records="posts"
+                :reAcords="posts"
                 :show-page-length="false"
                 @updateRecords="getPosts"
                 @change.native="getPosts">

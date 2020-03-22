@@ -1,7 +1,7 @@
 <template>
     <form @submit.prevent="submit" @keydown="pageForm.errors.clear($event.target.name)">
         <div class="row">
-            <div class="col-12 col-md-12">
+            <div class="col-12 col-md-6">
                 <div class="form-group">
                     <label>{{ trans('page.title') }}</label>
                     <input class="form-control" type="text" value="" v-model="pageForm.title" name="title"
@@ -9,6 +9,23 @@
                     <show-error :form-name="pageForm" prop-name="title"></show-error>
                 </div>
             </div>
+
+            <div class="col-12 col-md-6">
+
+                <div class="form-group">
+                    <label>{{ trans('menu.parent') }}</label>
+                    <select class="form-control custom-select" name="menu_id"
+                            v-model="pageForm.menu_id">
+                        <option value="">{{ trans('menu.select_menu') }}</option>
+                        <option v-for="menu in menus" :value="menu.value">
+                            {{ menu.text }}
+                        </option>
+                    </select>
+                    <show-error :form-name="pageForm" prop-name="menu_id"></show-error>
+                </div>
+
+            </div>
+
             <div class="col-12 col-md-12">
                 <div class="form-group">
                     <label>{{ trans('page.body') }}</label>
@@ -45,7 +62,9 @@
                     id: '',
                     title: '',
                     body: '',
+                    menu_id:''
                 }),
+                menus: [],
                 statistics: {
                     published: 0
                 }
@@ -61,6 +80,15 @@
                     helper.showDataErrorMsg(error);
                 });
 
+            axios.get('/api/menus/pre-requisite')
+                .then(response => response.data)
+                .then(response => {
+                    this.menus = response;
+                })
+                .catch(error => {
+                    helper.showDataErrorMsg(error);
+                });
+
             if (this.slug) {
                 helper.showSpinner();
                 axios.get('/api/default/page/' + this.slug)
@@ -69,6 +97,7 @@
                         this.pageForm.title = response.page.title;
                         this.pageForm.body = response.page.body;
                         this.pageForm.id = response.page.id;
+                        this.pageForm.menu_id = response.page.menu_id;
                         helper.hideSpinner();
                     })
                     .catch(error => {

@@ -40,7 +40,7 @@
                                             <div class="col-12 col-md-3">
                                                 <div class="form-group">
                                                     <label>{{ trans('category.category') }}</label>
-                                                    <select v-model="filterPostForm.category_id" class="custom-select col-12 form-control">
+                                                    <select v-model="filterTeamForm.category_id" class="custom-select col-12 form-control">
                                                         <option value="">{{ trans('general.select_one') }}</option>
                                                         <option v-for="category in categories" v-bind:value="category.id">
                                                             {{ category.name }}
@@ -87,12 +87,12 @@
                                             <td>{{ published.created_at }}</td>
                                             <td class="table-option">
                                                 <div class="btn-group">
-                                                    <router-link :to="`/post/${published.slug}/cover`"
+                                                    <router-link :to="`/team/${published.slug}/cover`"
                                                                  class="btn btn-success btn-sm"
                                                                  v-tooltip="trans('post.upload_cover')">
                                                         <i class="far fa-images"></i>
                                                     </router-link>
-                                                    <router-link :to="`/post/${published.slug}/edit`"
+                                                    <router-link :to="`/team/${published.slug}/edit`"
                                                                  class="btn btn-info btn-sm"
                                                                  v-tooltip="trans('post.edit_published')">
                                                         <i class="fas fa-edit"></i>

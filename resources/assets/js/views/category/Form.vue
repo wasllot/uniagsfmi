@@ -6,6 +6,7 @@
                    :placeholder="trans('category.name')">
             <show-error :form-name="categoryForm" prop-name="name"></show-error>
         </div>
+        
         <button type="submit" class="btn btn-info waves-effect waves-light pull-right">
             <span>{{ trans('general.save') }}</span>
         </button>

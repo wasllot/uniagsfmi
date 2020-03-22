@@ -1,33 +1,24 @@
 <template>
 
-<!--      <div class="col-md-6 col-lg-4 col-12">
+    <div class="col-md-4">
 
-            <figure class="snip1543">
-              <img :src="'/'+page.cover" :alt="page.title"/>
-              <figcaption>
-                
-                <p> {{ page.title }}</p>
-
-              </figcaption>
-               <router-link @click.native="showSpinner" :to="`${page.slug}`">
-                           
-                </router-link>
-            </figure>
-    </div> -->
-
- 
-        <article class="portfolio-item device tablet left flex-order-tablet_0 responsive-design video-design device-list">
-            <div class="device-hardware">
-                <router-link @click.native="showSpinner" :to="`${page.slug}`" class="hover-trigger">
-                    <span class="device-screen" :style="{ 'background-image': 'url(' + page.cover + ')' }">
-                        <span class="hover-name">{{ page.title }}</span>
-                    </span>
-                    <i class="hover-icon fa fa-eye"></i>
-                </router-link>
+        <router-link @click.native="showSpinner" class="card" :to="`${page.slug}`">
+            <div class="card-img"
+                 :class="[page.cover !== 'uploads/images/cover-default.png' ? 'cover-img' : '']">
+                <img class="card-img-top img-responsive" :src="page.cover" :alt="page.title">
             </div>
-        </article>
-      
-
+            <div class="card-body">
+                <h3 class="card-title page-title list-title">{{ page.title }}</h3>
+                <h5 class="card-text list-text" v-html="limitWords(page.stripped_body)"></h5>
+                <p class="card-text">
+                    <small class="text-muted card-caps">
+                         {{ page.created_at }}
+                    </small>
+                </p>
+            </div>
+        </router-link>
+          
+    </div>
 
 </template>
 
@@ -37,7 +28,10 @@
         methods: {
             showSpinner() {
                 return helper.showSpinner();
-            }
+            },
+             limitWords(str) {
+                return helper.limitWords(str, 35);
+            },
         }
     }
 </script>

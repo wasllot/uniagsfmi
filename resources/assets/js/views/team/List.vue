@@ -1,33 +1,13 @@
 <template>
-    <div class="container-fluid">
-        <div class="row" v-for="items in splitted">
-            <div class="col-12 m-b-20">
-                <div v-if="items.length === 3" class="card-deck">
-                    <team-card v-for="team in items" :team="team" :key="team.id"></team-card>
-                </div>
-                <div v-if="items.length === 2" class="card-deck">
-                    <team-card v-for="team in items" :team="team" :key="team.id"></team-card>
-                    <div class="card card-hidden"></div>
-                </div>
-                <div v-if="items.length === 1" class="card-deck">
-                    
-                    <ul class="masonry-list">
+    <div class="container">
+        <div class="row">
+        
 
-                        <team-card v-for="team in team" :team="team" :key="team.id"></team-card>
-                        
-                    </ul>
-                    <div class="card card-hidden"></div>
-                    <div class="card card-hidden"></div>
-                </div>
-            </div>
+            <team-card v-if="teams" v-for="team in teams" :team="team" :key="team.id"></team-card>
+
+
         </div>
-        <pagination-record
-                :page-length.sync="filterTeamForm.page_length"
-                :records="teams"
-                :show-page-length="false"
-                @updateRecords="getTeams"
-                @change.native="getTeams">
-        </pagination-record>
+
     </div>
 </template>
 
@@ -78,7 +58,7 @@
                 }
                 let url = helper.getFilterURL(this.filterTeamForm);
                 helper.showSpinner();
-                axios.get('/api/teams?page=' + page + url)
+                axios.get('/api/teams/')
                     .then(response => response.data)
                     .then(response => {
                         this.teams = response.teams;

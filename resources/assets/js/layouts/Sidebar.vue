@@ -1,5 +1,5 @@
 <template>
-    <aside class="left-sidebar d-print-none">
+    <aside class="left-sidebar d-print-none" style="margin-top: 5rem;">
         <div class="scroll-sidebar">
             <div class="user-profile">
                 <div class="profile-img mt-2"><img :src="getAuthUser('avatar')" alt="Avatar"></div>
@@ -32,12 +32,25 @@
                             <i class="far fa-share-square fa-fw"></i>
                             <span class="hide-menu">{{ trans('post.posts') }}</span>
                         </router-link>
+                    </li>                     
+                    <li v-if="hasPermission('access-post')">
+                        <router-link to="/portfolio/published" exact>
+                            <i class="fas fa-image fa-fw"></i>
+                            <span class="hide-menu">{{ trans('general.portfolio') }}</span>
+                        </router-link>
                     </li>                    
 
                     <li v-if="hasPermission('access-page')">
                         <router-link to="/team/published" exact>
-                            <i class="far fa-share-square fa-fw"></i>
+                            <i class="fas fa-briefcase  fa-fw"></i>
                             <span class="hide-menu">{{ trans('team.teams') }}</span>
+                        </router-link>
+                    </li>                  
+
+                    <li v-if="hasPermission('access-page')">
+                        <router-link to="/menus/list" exact>
+                            <i class="fas fa-bars fa-fw"></i>
+                            <span class="hide-menu">Menus</span>
                         </router-link>
                     </li>
                     <li v-if="hasPermission('access-category')">
@@ -49,7 +62,7 @@
                     <li v-if="hasPermission('access-page')">
                         <router-link to="/page/published" exact>
                             <i class="fas fa-columns fa-fw"></i>
-                            <span class="hide-menu">{{ trans('page.certs') }}</span>
+                            <span class="hide-menu">{{ trans('page.pages') }}</span>
                         </router-link>
                     </li>                    
 
@@ -58,13 +71,12 @@
                             <i class="fas fa-columns fa-home"></i>
                             <span class="hide-menu">{{ trans('page.main_page') }}</span>
                         </router-link>
-                    </li>
-                    <li v-if="hasPermission('access-page')">                
-                    <router-link to="/default/components" exact>
-                            <i class="fas fa-columns fa-info"></i>
-                            <span class="hide-menu">{{ trans('page.component') }}s</span>
-                        </router-link>
-                    </li>
+                    </li>                    <li v-if="hasPermission('access-page')">                
+<router-link to="/default/components" exact>
+        <i class="fas fa-columns fa-info"></i>
+        <span class="hide-menu">{{ trans('page.component') }}s</span>
+    </router-link>
+</li>
                     <li v-if="hasPermission('access-configuration')">
                         <router-link to="/activity-log" exact>
                             <i class="fas fa-bars fa-fw"></i>

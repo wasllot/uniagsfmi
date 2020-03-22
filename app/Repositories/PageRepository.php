@@ -157,7 +157,9 @@ class PageRepository
         $page = ($id) ? $this->page->find($id) : $this->page;
         $page->fill([
             'title' => $params['title'],
+            'slug' => str_slug($params['title']),
             'body' => $params['body'],
+            'menu_id' => $params['menu_id'], 
         ]);
 
         if (!$id) {
@@ -173,6 +175,12 @@ class PageRepository
         $page->save();
 
         return $page;
+    }
+
+    public function page_count($id){
+        $page = $this->page->findOrFail($id);
+        $page->count = $page->count + 1; 
+        $page->save();
     }    
 
 
@@ -210,10 +218,6 @@ class PageRepository
      */
     public function storeMainPage($params = [])
     {
-        $id = isset($params['id']) ? $params['id'] : null;
-
-        if ($id) {
-
             $page = DB::table('main_pages')->where('id', 1)->update([
                 'section_1' => $params['section_1'],
                 'section_2' => $params['section_2'],
@@ -222,8 +226,7 @@ class PageRepository
                 'section_5' => $params['section_5'],
                 'section_6' => $params['section_6']
             ]);    
-        }
-
+  
         return $page;
     }
 
@@ -255,6 +258,43 @@ class PageRepository
         }
 
         return $published->orderBy('created_at', 'desc')->paginate($page_length);
+    }
+
+       /**
+     * Get latest pages.
+     *
+     * @param array $params
+     *
+     * @return Post[]|Collection
+     */
+    public function getlatest($length)
+    {         
+        return $this->page->orderBy('created_at', 'desc')->paginate($length);
+    }
+       
+
+    /**
+     * Get related pages.
+     *
+     * @param array $params
+     *
+     * @return Post[]|Collection
+     */
+    public function getRelatedPages($menu_id, $length)
+    {         
+        return $this->page->where('menu_id', $menu_id)->orderBy('created_at', 'desc')->paginate($length);
+    }
+
+    /**
+     * Get most views pages.
+     *
+     * @param array $params
+     *
+     * @return Post[]|Collection
+     */
+    public function getMostViews($length)
+    {         
+        return $this->page->orderBy('count', 'desc')->paginate($length);
     }
 
 

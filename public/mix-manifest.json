@@ -1,18 +1,5 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/style.css": "/css/style.css",
-    "/css/colors/blue.css": "/css/colors/blue.css",
-    "/css/colors/blue-dark.css": "/css/colors/blue-dark.css",
-    "/css/colors/default.css": "/css/colors/default.css",
-    "/css/colors/default-dark.css": "/css/colors/default-dark.css",
-    "/css/colors/green.css": "/css/colors/green.css",
-    "/css/colors/green-dark.css": "/css/colors/green-dark.css",
-    "/css/colors/megna.css": "/css/colors/megna.css",
-    "/css/colors/megna-dark.css": "/css/colors/megna-dark.css",
-    "/css/colors/purple.css": "/css/colors/purple.css",
-    "/css/colors/purple-dark.css": "/css/colors/purple-dark.css",
-    "/css/colors/red.css": "/css/colors/red.css",
-    "/css/colors/red-dark.css": "/css/colors/red-dark.css",
-    "/css/colors/light.css": "/css/colors/light.css",
-    "/js/plugin.js": "/js/plugin.js"
+    "/js/frontend.js": "/js/frontend.js?id=a565f25d26af8d0481d8",
+    "/css/frontend.css": "/css/frontend.css?id=8a5b5d6dd9a3bf7460f7",
+    "/js/frontend-plugins.js": "/js/frontend-plugins.js?id=2da0b66d40ef4f9aaa62"
 }

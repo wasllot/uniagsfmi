@@ -64,5 +64,12 @@ return [
     'upload' => 'Cargar',
     'yes' => 'Sí',
     'email_sent' => 'Email enviado.',
-    'email_not_sent' => 'El email no ha sido enviado.'
+    'email_not_sent' => 'El email no ha sido enviado.',
+    'blog' => 'Blog',
+    'title' => 'Título',
+    'subtitle' => 'Subtítilo',
+    'list' => 'Lista',
+    'portfolio' => 'Portafolio'
+
+    
 ];

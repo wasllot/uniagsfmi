@@ -15,7 +15,7 @@ const webpack = require('webpack');
 let plugin = 'resources/assets/plugins/';
 const CompressionPlugin = require('compression-webpack-plugin');
 
-mix.js('resources/assets/js/app.js', 'public/js/app.js')
+mix.js('resources/assets/js/app.js', 'public/js/frontend.js')
     .combine([
         plugin + 'jquery/jquery.min.js',
         plugin + 'popper/popper.min.js',
@@ -24,24 +24,13 @@ mix.js('resources/assets/js/app.js', 'public/js/app.js')
         plugin + 'moment/moment-with-locales.min.js',
         plugin + 'toastr/toastr.min.js',
         plugin + 'slimscroll/jquery.slimscroll.js',
-        plugin + 'waves/waves.js',
+        plugin + 'waves/waves.js', 
         plugin + 'summernote/summernote-bs4.js',
-        'resources/assets/js/custom.js'
-    ], 'public/js/plugin.js')
-    .sass('resources/assets/sass/style.scss', 'public/css')
-    .sass('resources/assets/sass/colors/blue.scss', 'public/css/colors')
-    .sass('resources/assets/sass/colors/blue-dark.scss', 'public/css/colors')
-    .sass('resources/assets/sass/colors/default.scss', 'public/css/colors')
-    .sass('resources/assets/sass/colors/default-dark.scss', 'public/css/colors')
-    .sass('resources/assets/sass/colors/green.scss', 'public/css/colors')
-    .sass('resources/assets/sass/colors/green-dark.scss', 'public/css/colors')
-    .sass('resources/assets/sass/colors/megna.scss', 'public/css/colors')
-    .sass('resources/assets/sass/colors/megna-dark.scss', 'public/css/colors')
-    .sass('resources/assets/sass/colors/purple.scss', 'public/css/colors')
-    .sass('resources/assets/sass/colors/purple-dark.scss', 'public/css/colors')
-    .sass('resources/assets/sass/colors/red.scss', 'public/css/colors')
-    .sass('resources/assets/sass/colors/red-dark.scss', 'public/css/colors')
-    .sass('resources/assets/sass/colors/light.scss', 'public/css/colors')
+        plugin + 'frontend/custom.js',
+        'resources/assets/js/custom.js', 
+    ], 'public/js/frontend-plugins.js')
+    .sass('resources/assets/sass/frontend.scss', 'public/css/frontend.css')
+  
     .webpackConfig({
         plugins: [
             new CompressionPlugin({

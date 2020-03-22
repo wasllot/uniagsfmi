@@ -14,10 +14,21 @@
 Route::get('/configuration/variable', 'ConfigurationController@getConfigurationVariable');
 Route::post('/sendMail', 'HomeController@contactEmail');
 Route::get('/page/main','PageController@getMainPage');
+Route::get('/pages/by_views','PageController@getPagesByViews');
 Route::get('/post/getPostSlider','PostController@getPostSlider');
+Route::get('/menus', 'MenuController@getAllPages');
+Route::get('/posts','PostController@getLatest');
+Route::get('/teams','TeamController@getTeams');
+Route::get('/teams/details/{slug}','TeamController@show');
+Route::get('/blog','PostController@getBlog');
+Route::get('/posts/list','PostController@blogPagination');
+
+Route::get('/portfolio/pre-requisite','PortfolioItemController@preRequisite');
+Route::get('/portfolio/','PortfolioItemController@pagination');
+
 
 Route::group(['prefix' => 'posts'], function () {
-    Route::get('/','PostController@getPublicPosts');
+    Route::get('/','PostController@getLatest');
     Route::get('/{category}/{slug}','PostController@getPublicPost');
 });
 
@@ -86,6 +97,14 @@ Route::group(['middleware' => ['jwt.auth']], function () {
     Route::delete('/user/profile/avatar/remove/{id}', 'UserController@removeAvatar');
     Route::delete('/user/{id}', 'UserController@destroy');
 
+
+    Route::get('/menus/pre-requisite', 'MenuController@preRequisite');
+    Route::get('/menu', 'MenuController@index');
+    Route::get('/menu/{id}', 'MenuController@show');
+    Route::post('/menu', 'MenuController@store');
+    Route::delete('/menu/{id}', 'MenuController@destroy');
+
+
     
     Route::get('/team/pre-requisite','TeamController@preRequisite');
     Route::post('/team/statistics','TeamController@statistics');
@@ -97,6 +116,11 @@ Route::group(['middleware' => ['jwt.auth']], function () {
     Route::post('/team/upload/image','TeamController@uploadImage');
     Route::post('/team/cover/{id}', 'TeamController@uploadCover');
     Route::delete('/team/cover/remove/{id}', 'TeamController@removeCover');    
+
+    Route::post('/portfolio/','PortfolioItemController@store');
+    Route::post('/portfolio/image/', 'PortfolioItemController@uploadImage');
+    Route::get('/portfolio/image/remove/{id}', 'PortfolioItemController@removeCover');
+
 
     Route::get('/post/pre-requisite','PostController@preRequisite');
     Route::post('/post/statistics','PostController@statistics');

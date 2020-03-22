@@ -31,7 +31,31 @@ class CategoryRepository
      */
     public function getAll()
     {
-        return $this->category->withCount('posts')->get();
+        return $this->category->withCount('posts', 'portfolioItems')->get();
+    }    
+
+    /**
+     * Get portfolio categories
+     *
+     * @return array
+     */
+    public function getPortfolioCategories()
+    {
+
+        $categories = $this->category->withCount('posts', 'portfolioItems')->get();
+        $portfolio = [];
+
+        foreach ($categories as $key => $value) {
+
+            if($value->portfolio_items_count > 0){
+                
+                array_push($portfolio, $value);
+
+            }
+            
+        }
+
+        return $portfolio;
     }
 
     /**

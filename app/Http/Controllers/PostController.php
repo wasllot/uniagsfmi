@@ -62,7 +62,7 @@ class PostController extends Controller
         $this->activity = $activity;
         $this->user = $user;
         $this->category = $category;
-        $this->middleware('permission:access-post')->except(['getPublicPosts', 'getPublicPost', 'getPostSlider']);
+        $this->middleware('permission:access-post')->except(['getPublicPosts', 'getPublicPost', 'getPostSlider', 'getBlog', 'blogPagination', 'getLatest']);
     }
 
     /**
@@ -75,6 +75,35 @@ class PostController extends Controller
         $categories = $this->category->getAll();
 
         $posts = $this->repo->getPosts($this->request->all());
+
+        return $this->success(compact('categories', 'posts'));
+    }      
+
+    /**
+     * Display all public posts
+     *
+     * @return JsonResponse
+     */
+    public function getBlog()
+    {
+
+        $posts = $this->repo->pagination();
+        $blog = $this->repo->getBlog();
+
+        return $this->success(compact('blog', 'posts'));
+    }    
+
+    /**
+     * Display all public posts
+     *
+     * @return JsonResponse
+     */
+    public function getLatest()
+    {
+        $categories = $this->category->getAll();
+
+        $posts = $this->repo->getLatest(3);
+
 
         return $this->success(compact('categories', 'posts'));
     }
@@ -165,6 +194,25 @@ class PostController extends Controller
         $draft = $this->repo->getDraft()->count();
 
         return $this->success(compact('published', 'draft'));
+    }
+
+
+    /**
+     * Infinite loading
+     *
+     * @return JsonResponse
+     */
+    public function blogPagination()
+    {
+    
+
+        $posts =  $this->repo->pagination(); 
+        $categories = $this->category->getAll();
+
+
+        return $this->success(compact('posts', 'categories'));
+        
+
     }
 
     /**

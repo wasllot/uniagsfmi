@@ -51,7 +51,7 @@ class PageController extends Controller{
         $this->repo = $repo;
         $this->activity = $activity;
         $this->category = $category;
-        $this->middleware('permission:access-page')->except(['getPublicPages', 'getPublicPage', 'getMainPage']);
+        $this->middleware('permission:access-page')->except(['getPublicPages', 'getPublicPage', 'getMainPage', 'getPagesByViews']);
     }
 
     /**
@@ -59,11 +59,27 @@ class PageController extends Controller{
      *
      * @return JsonResponse
      */
+    
     public function getPublicPages()
     {
-        $pages = $this->repo->getPublished();
+        $pages = $this->repo->getlatest(5);
 
-        return $this->success(compact('pages'));
+
+       return $this->success(compact('pages'));
+    }    
+
+    /**
+     * Display all public pages
+     *
+     * @return JsonResponse
+     */
+    
+    public function getPagesByViews()
+    {
+        $pages = $this->repo->getMostViews(5);
+
+
+       return $this->success(compact('pages'));
     }
 
 
@@ -74,13 +90,19 @@ class PageController extends Controller{
      *
      * @return JsonResponse
      */
+
     public function getPublicPage($slug)
     {
         $categories = $this->category->getAll();
 
         $page = $this->repo->getBySlugForGuests($slug);
 
-        return $this->success(compact('categories', 'page'));
+        $pages = $this->repo->getRelatedPages($page->menu_id, 9);
+
+        $this->repo->page_count($page->id);
+
+
+        return $this->success(compact('categories', 'page', 'pages'));
 
     }
 
@@ -207,10 +229,10 @@ class PageController extends Controller{
         $filename = uniqid();
         request()->file('image')->move($image_path, $filename . "." . $extension);
         $img = \Image::make($image_path . $filename . "." . $extension);
-        $img->resize(500, null, function ($constraint) {
+        $img->resize(1000, null, function ($constraint) {
             $constraint->aspectRatio();
         });
-        $img->crop(500, 530);
+        //$img->crop(500, 530);
         $img->save($image_path . $filename . "." . $extension);
         $page->cover = $image_path . $filename . "." . $extension;
         $page->save();

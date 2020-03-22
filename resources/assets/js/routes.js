@@ -199,6 +199,11 @@ let routes = [
                 meta: {title: i18n.post.cover + ' | ' + appName}
             },
             {
+                path: '/portfolio/published',
+                component: require('./views/pages/Portfolio.vue').default,
+                meta: {title: i18n.post.published_box + ' | ' + appName}
+            },
+            {
                 path: '/team',
                 component: require('./views/team/Index.vue').default,
                 meta: {title: i18n.team.new + ' | ' + appName}
@@ -227,6 +232,11 @@ let routes = [
                 path: '/team/:slug/cover',
                 component: require('./views/team/Cover').default,
                 meta: {title: i18n.team.cover + ' | ' + appName}
+            },
+            {
+                path: '/menus/list',
+                component: require('./views/menus/List.vue').default,
+                meta: {title: i18n.team.published_box + ' | ' + appName}
             },
             {
                 path: '/category',
@@ -273,7 +283,7 @@ let routes = [
                 component: require('./views/default/Edit').default,
                 meta: {title: i18n.page.edit + ' | ' + appName}
             },
-                        {
+            {
                 path: '/page/:slug/cover',
                 component: require('./views/page/Cover').default,
                 meta: {title: i18n.page.cover + ' | ' + appName}
@@ -305,9 +315,19 @@ let routes = [
                 component: require('./views/page/View.vue').default,
                 meta: {title: appName}
             },             {
-                path: '/team/:slug',
+                path: '/team/:slug/details',
                 component: require('./views/team/View.vue').default,
                 meta: {title: appName}
+            },
+            {
+                path: '/blog/1/list',
+                component: require('./views/blog/Index.vue').default,
+                meta: {title: 'Blog | ' + appName}
+            },
+            {
+                path: '/portfolio/1/list',
+                component: require('./views/statics/portfolio/Portfolio.vue').default,
+                meta: {title: 'Portafolio | ' + appName}
             }
         ]
     },

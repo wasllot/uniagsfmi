@@ -37,16 +37,13 @@
         },
         mounted() {
       
-	        helper.showSpinner();
 	        axios.get('/api/default/components')
 	            .then(response => response.data)
 	            .then(response => {
 	            	this.components = response.pages;
-	                helper.hideSpinner();
 	            })
 	            .catch(error => {
 	                helper.showDataErrorMsg(error);
-	                helper.hideSpinner();
 	            });
             
         },

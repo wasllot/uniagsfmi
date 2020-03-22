@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Category;
 use App\Post;
+use App\StaticPage;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Validation\ValidationException;
@@ -55,7 +56,35 @@ class PostRepository
             return $published->get();
         }
 
-        return $published->orderBy('created_at', 'desc')->paginate($page_length);
+        return $published->orderBy('created_at', 'desc')->paginate(2);
+    }    
+
+    /**
+     * Get latest posts.
+     *
+     * @param array $params
+     *
+     * @return Post[]|Collection
+     */
+    public function getlatest($length)
+    {
+        $page_length = isset($params['page_length']) ? $params['page_length'] : config('config.page_length');
+        $search_query = isset($params['search_query']) ? $params['search_query'] : null;
+        $category_id = isset($params['category_id']) ? $params['category_id'] : null;
+        $created_at_start_date = isset($params['created_at_start_date']) ? $params['created_at_start_date'] : null;
+        $created_at_end_date = isset($params['created_at_end_date']) ? $params['created_at_end_date'] : null;
+
+        $published = $this->post
+            ->with('user', 'user.profile', 'category')
+            ->filterByIsDraft(0)
+            ->filterBySearchQuery($search_query)
+            ->filterByCategoryId($category_id)
+            ->createdAtDateBetween([
+                'start_date' => $created_at_start_date,
+                'end_date' => $created_at_end_date
+            ]);
+            
+        return $published->orderBy('created_at', 'desc')->paginate($length);
     }
 
     /**
@@ -173,6 +202,29 @@ class PostRepository
         }
 
         return $post;
+    }    
+
+    /**
+     * Find blog by slug
+     *
+     * @param int|null $id
+     *
+     * @return Post
+     * @throws ValidationException
+     */
+    public function getBlog($slug = null)
+    {
+        //$blog = StaticPage::where('slug', $slug)->first();
+
+        $blog = StaticPage::filterBySlug($slug)
+            ->first();
+
+        if (!$blog) {
+            throw ValidationException::withMessages(['message' => trans('general.invalid_link')]);
+        }
+
+        return $blog;
+
     }
 
     /**
@@ -297,4 +349,21 @@ class PostRepository
 
         return $published->orderBy('created_at', 'desc')->paginate($page_length);
     }
+
+
+
+    /**
+     * pagination posts.
+     *
+     *
+     * @return Post[]|Collection
+     */
+
+
+   public function pagination(){
+
+        return Post::with('user', 'user.profile','category')->orderBy('id', 'desc')->paginate(2);
+
+   }
+   
 }

@@ -1,34 +1,41 @@
 <template>
-    <section id="wrapper">
-        <div class="hero d-flex" :style="{ 'background-image' : 'url(\'' + getBackground + '\')' }">
-            <div class="login-box card row justify-content-center align-self-center">
-                <div class="card-body">
-                    <form class="form-horizontal form-material" id="loginform" @submit.prevent="submit"
+
+<div class="body">
+  <div id="login">
+        <h3 class="text-center text-white pt-5">{{getConfig('company_name')}}</h3>
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                        <form id="login-form" class="form" @submit.prevent="submit"
                           @keydown="loginForm.errors.clear($event.target.name)">
-                        <h3 class="box-title m-b-20">{{ trans('auth.login') }}</h3>
-                        <div class="form-group ">
-                            <input type="text" name="email" class="form-control" :placeholder="trans('auth.email')"
-                                   v-model="loginForm.email" autocapitalize="none">
-                            <show-error :form-name="loginForm" prop-name="email"></show-error>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" name="password" class="form-control"
-                                   :placeholder="trans('auth.password')" v-model="loginForm.password">
-                            <show-error :form-name="loginForm" prop-name="password"></show-error>
-                        </div>
-                        <div class="form-group text-center m-t-20">
-                            <button-spinner
-                                    :btn-text="trans('auth.sign_in')"
-                                    :class="'btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light'"
-                                    :is-loading="isLoading"
-                                    :disabled="isLoading">
-                            </button-spinner>
-                        </div>
-                    </form>
+                            <h3 class="text-center text-info">Ingresar</h3>
+                            <div class="form-group">
+                                <label for="username" class="text-info">{{trans('auth.email')}}</label><br>
+                                <input type="text" name="username" :placeholder="trans('auth.email')" v-model="loginForm.email" id="username" class="form-control">
+                                <show-error :form-name="loginForm" prop-name="email"></show-error>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="text-info">{{trans('auth.password')}}</label><br>
+                                <input type="password" name="password" :placeholder="trans('auth.password')" v-model="loginForm.password" id="password" class="form-control">
+                                <show-error :form-name="loginForm" prop-name="password"></show-error>
+                            </div>
+                            <div class="form-group">
+                                 <button-spinner
+                                        :btn-text="trans('auth.sign_in')"
+                                        :class="'btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light'"
+                                        :is-loading="isLoading"
+                                        :disabled="isLoading">
+                                </button-spinner>
+                            </div>
+                       </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>  
+</div>
+
 </template>
 
 <script>
